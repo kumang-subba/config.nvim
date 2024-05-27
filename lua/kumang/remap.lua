@@ -48,3 +48,9 @@ set("n", "<leader>ll", "<cmd>Lazy<cr>", { desc = "Lazy" })
 
 set("n", "<leader>ls", ":LiveServerStart<CR>", { desc = "Live server start", silent = true })
 set("n", "<leader>lq", ":LiveServerStop<CR>", { desc = "Live server stop", silent = true })
+
+-- NOTE: Move line up and down with alt
+set("n", "<A-j>", ":m .+1<CR>==", { silent = true, desc = "Alt j move line down n mode" })
+set("n", "<A-k>", ":m .-2<CR>==", { silent = true, desc = "Alt k move line up n mode" })
+set("v", "<A-j>", ":m '>+1<CR>gv=gv", { silent = true, desc = "Alt j move line up v mode" })
+set("v", "<A-k>", ":m '<-2<CR>gv=gv", { silent = true, desc = "Alt k move line up v mode" })
