@@ -39,7 +39,7 @@ opt.updatetime = 50
 opt.colorcolumn = "0"
 
 opt.list = true
-opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 vim.o.laststatus = 3
 vim.api.nvim_set_hl(0, "highlightbg", { ctermbg = 0, bg = "#999999" })

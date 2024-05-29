@@ -54,3 +54,17 @@ set("n", "<A-j>", ":m .+1<CR>==", { silent = true, desc = "Alt j move line down 
 set("n", "<A-k>", ":m .-2<CR>==", { silent = true, desc = "Alt k move line up n mode" })
 set("v", "<A-j>", ":m '>+1<CR>gv=gv", { silent = true, desc = "Alt j move line up v mode" })
 set("v", "<A-k>", ":m '<-2<CR>gv=gv", { silent = true, desc = "Alt k move line up v mode" })
+
+-- NOTE: Turn on/off format on save
+set("n", "<leader>fq", ":autocmd! BufWritePre<Cr>", { desc = "Disalbe autoformat on save" })
+set("n", "<leader>fs", function()
+	vim.api.nvim_create_autocmd("BufWritePre", {
+		callback = function(args)
+			require("conform").format({
+				bufnr = args.buf,
+				lsp_fallback = true,
+				quiet = true,
+			})
+		end,
+	})
+end, { desc = "Enable autoformat on save" })
