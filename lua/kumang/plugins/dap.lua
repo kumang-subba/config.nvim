@@ -170,7 +170,7 @@ return {
 			vim.keymap.set("n", "<space>bt", dap.terminate, { desc = "Debug: Quit debugger" })
 
 			-- Eval var under cursor
-			vim.keymap.set("n", "<space>?", function()
+			vim.keymap.set("n", "<space>bx", function()
 				require("dapui").eval(nil, { enter = true })
 			end)
 
@@ -180,7 +180,7 @@ return {
 			vim.keymap.set("n", "<F4>", dap.step_out)
 			vim.keymap.set("n", "<F5>", dap.step_back)
 			vim.keymap.set("n", "<F10>", dap.restart)
-			vim.keymap.set("n", "<leader>bq", ui.close)
+			vim.keymap.set("n", "<leader>bq", ui.close, { desc = "Close Debugger" })
 
 			dap.listeners.before.attach.dapui_config = function()
 				ui.open()

@@ -25,7 +25,6 @@ set("n", "<C-u>", "<C-u>zz", { desc = "Center screen on C-u" })
 set("n", "n", "nzzzv", { desc = "Center screen on forward search" })
 set("n", "N", "Nzzzv", { desc = "Center screen on back search" })
 
-set("x", "<leader>p", '"_dP', { desc = "Paste from clipboard" })
 set("o", "L", "$", { desc = "Go to end of line on operator pending mode" })
 set("o", "H", "^", { desc = "Go to start of line on operator pending mode" })
 

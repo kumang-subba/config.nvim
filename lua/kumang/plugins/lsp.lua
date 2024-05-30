@@ -73,20 +73,6 @@ return {
 						"ocaml.menhir",
 						"ocaml.cram",
 					},
-
-					-- TODO: Check if i still need the filtypes stuff i had before
-				},
-
-				lexical = {
-					cmd = { "/home/tjdevries/.local/share/nvim/mason/bin/lexical", "server" },
-					root_dir = require("lspconfig.util").root_pattern({ "mix.exs" }),
-				},
-
-				clangd = {
-					-- TODO: Could include cmd, but not sure those were all relevant flags.
-					--    looks like something i would have added while i was floundering
-					init_options = { clangdFileStatus = true },
-					filetypes = { "c" },
 				},
 			}
 
@@ -101,10 +87,11 @@ return {
 
 			require("mason").setup()
 			local ensure_installed = {
+				"clangd",
 				"stylua",
 				"lua_ls",
 				"js-debug-adapter",
-				-- "tailwind-language-server",
+				"prettier",
 			}
 
 			vim.list_extend(ensure_installed, servers_to_install)
@@ -131,14 +118,19 @@ return {
 					local client = assert(vim.lsp.get_client_by_id(args.data.client_id), "must have valid client")
 
 					vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
-					vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = 0 })
-					vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = 0 })
-					vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = 0 })
-					vim.keymap.set("n", "gT", vim.lsp.buf.type_definition, { buffer = 0 })
-					vim.keymap.set("n", "gh", vim.lsp.buf.hover, { buffer = 0 })
+					vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = 0, desc = "Code Definition" })
+					vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = 0, desc = "Code References" })
+					vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = 0, desc = "Code Declaraction" })
+					vim.keymap.set(
+						"n",
+						"gT",
+						vim.lsp.buf.type_definition,
+						{ buffer = 0, desc = "Code type Definition" }
+					)
+					vim.keymap.set("n", "gh", vim.lsp.buf.hover, { buffer = 0, desc = "Code Hover" })
 
-					vim.keymap.set("n", ",cr", vim.lsp.buf.rename, { buffer = 0 })
-					vim.keymap.set("n", ",ca", vim.lsp.buf.code_action, { buffer = 0 })
+					vim.keymap.set("n", ",cr", vim.lsp.buf.rename, { buffer = 0, desc = "Code rename" })
+					vim.keymap.set("n", ",ca", vim.lsp.buf.code_action, { buffer = 0, desc = "Code ACtion" })
 
 					local filetype = vim.bo[bufnr].filetype
 					if disable_semantic_tokens[filetype] then
