@@ -36,6 +36,7 @@ return {
 				rust_analyzer = true,
 				cssls = true,
 				tailwindcss = true,
+				clangd = true,
 
 				-- Probably want to disable formatting for this lang server
 				tsserver = true,
@@ -46,32 +47,6 @@ return {
 							schemas = require("schemastore").json.schemas(),
 							validate = { enable = true },
 						},
-					},
-				},
-
-				yamlls = {
-					settings = {
-						yaml = {
-							schemaStore = {
-								enable = false,
-								url = "",
-							},
-							schemas = require("schemastore").yaml.schemas(),
-						},
-					},
-				},
-
-				ocamllsp = {
-					manual_install = true,
-					settings = {
-						codelens = { enable = true },
-					},
-
-					filetypes = {
-						"ocaml",
-						"ocaml.interface",
-						"ocaml.menhir",
-						"ocaml.cram",
 					},
 				},
 			}

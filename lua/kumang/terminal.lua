@@ -11,7 +11,7 @@ vim.api.nvim_create_autocmd("TermOpen", {
 })
 
 -- NOTE: Auto enter insert mode on terminal
-vim.api.nvim_create_autocmd({ "TermOpen", "BufEnter" }, {
+vim.api.nvim_create_autocmd({ "TermOpen" }, {
 	pattern = { "*" },
 	callback = function()
 		if vim.opt.buftype:get() == "terminal" then

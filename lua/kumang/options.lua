@@ -1,6 +1,5 @@
 local opt = vim.opt
 
--- opt.inccommand = "split"
 opt.guicursor = ""
 
 opt.smartcase = true

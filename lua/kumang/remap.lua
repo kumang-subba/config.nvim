@@ -55,7 +55,7 @@ set("v", "<A-j>", ":m '>+1<CR>gv=gv", { silent = true, desc = "Alt j move line u
 set("v", "<A-k>", ":m '<-2<CR>gv=gv", { silent = true, desc = "Alt k move line up v mode" })
 
 -- NOTE: Turn on/off format on save
-set("n", "<leader>fq", ":autocmd! BufWritePre<Cr>", { desc = "Disalbe autoformat on save" })
+set("n", "<leader>fq", ":autocmd! BufWritePre<Cr>", { desc = "Disalbe autoformat on save", silent = true })
 set("n", "<leader>fs", function()
 	vim.api.nvim_create_autocmd("BufWritePre", {
 		callback = function(args)

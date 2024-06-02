@@ -6,6 +6,7 @@ return {
 	priority = 1000,
 	init = function()
 		require("catppuccin").setup({
+			term_colors = true,
 			transparent_background = true,
 			integrations = {
 				cmp = true,
@@ -37,9 +38,8 @@ return {
 					scope_color = "lavender",
 				},
 			},
+			flavour = "mocha",
 		})
 		vim.cmd.colorscheme("catppuccin")
-		vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-		vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 	end,
 }

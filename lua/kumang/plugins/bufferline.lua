@@ -19,7 +19,7 @@ return {
         -- stylua: ignore
         right_mouse_command = function(n) LazyVim.ui.bufremove(n) end,
 			diagnostics = "nvim_lsp",
-			always_show_bufferline = false,
+			always_show_bufferline = true,
 			diagnostics_indicator = function(_, _, diag)
 				local icons = {
 					Error = " ",
@@ -42,6 +42,7 @@ return {
 			highlights = function()
 				return require("catppuccin.groups.integrations.bufferline").get()
 			end,
+			themeable = true,
 		},
 	},
 	config = function(_, opts)
