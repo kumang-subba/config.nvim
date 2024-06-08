@@ -4,6 +4,7 @@ vim.g.neovide_cursor_animate_command_line = false
 vim.o.guifont = "FiraCode Nerd Font"
 vim.g.neovide_refresh_rate = 144
 vim.g.neovide_cursor_trail_size = 0.8
+vim.g.neovide_cursor_antialiasing = true
 
 -- NOTE: Neovide bindings
 

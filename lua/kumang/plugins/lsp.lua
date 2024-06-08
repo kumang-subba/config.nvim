@@ -36,7 +36,20 @@ return {
 				rust_analyzer = true,
 				cssls = true,
 				tailwindcss = true,
-				clangd = true,
+				clangd = {
+					cmd = {
+						"clangd",
+						"--background-index",
+						"--clang-tidy",
+					},
+					init_options = {
+						clangdFileStatus = true, -- Provides information about activity on clangd’s per-file worker thread
+						usePlaceholders = true,
+						completeUnimported = true,
+						semanticHighlighting = true,
+					},
+				},
+				-- NOTE: dont forget: sudo apt install libstdc++-12-dev
 
 				-- Probably want to disable formatting for this lang server
 				tsserver = true,
@@ -118,6 +131,7 @@ return {
 			require("conform").setup({
 				formatters_by_ft = {
 					lua = { "stylua" },
+					javascript = { "prettier" },
 				},
 			})
 
