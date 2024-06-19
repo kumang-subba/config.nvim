@@ -51,8 +51,21 @@ return {
 				},
 				-- NOTE: dont forget: sudo apt install libstdc++-12-dev
 
-				-- Probably want to disable formatting for this lang server
-				tsserver = true,
+				tsserver = {
+					commands = {
+						OrganizeImports = {
+							function()
+								local params = {
+									command = "_typescript.organizeImports",
+									arguments = { vim.api.nvim_buf_get_name(0) },
+									title = "",
+								}
+								vim.lsp.buf.execute_command(params)
+							end,
+							description = "Organize Imports",
+						},
+					},
+				},
 
 				jsonls = {
 					settings = {
@@ -111,6 +124,12 @@ return {
 					vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = 0, desc = "Code Declaraction" })
 					vim.keymap.set(
 						"n",
+						"<leader>o",
+						":OrganizeImports<Cr>",
+						{ silent = true, desc = "Code Declaraction" }
+					)
+					vim.keymap.set(
+						"n",
 						"gT",
 						vim.lsp.buf.type_definition,
 						{ buffer = 0, desc = "Code type Definition" }
@@ -118,7 +137,7 @@ return {
 					vim.keymap.set("n", "gh", vim.lsp.buf.hover, { buffer = 0, desc = "Code Hover" })
 
 					vim.keymap.set("n", ",cr", vim.lsp.buf.rename, { buffer = 0, desc = "Code rename" })
-					vim.keymap.set("n", ",ca", vim.lsp.buf.code_action, { buffer = 0, desc = "Code ACtion" })
+					vim.keymap.set("n", ",ca", vim.lsp.buf.code_action, { buffer = 0, desc = "Code Action" })
 
 					local filetype = vim.bo[bufnr].filetype
 					if disable_semantic_tokens[filetype] then
