@@ -135,9 +135,8 @@ return {
 						{ buffer = 0, desc = "Code type Definition" }
 					)
 					vim.keymap.set("n", "gh", vim.lsp.buf.hover, { buffer = 0, desc = "Code Hover" })
-
-					vim.keymap.set("n", ",cr", vim.lsp.buf.rename, { buffer = 0, desc = "Code rename" })
-					vim.keymap.set("n", ",ca", vim.lsp.buf.code_action, { buffer = 0, desc = "Code Action" })
+					vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { buffer = 0, desc = "Code rename" })
+					vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = 0, desc = "Code Action" })
 
 					local filetype = vim.bo[bufnr].filetype
 					if disable_semantic_tokens[filetype] then

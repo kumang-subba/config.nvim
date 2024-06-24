@@ -6,6 +6,8 @@ set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
 set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
 set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+set("n", "<C-s>", "<C-w>s", { desc = "Split window vertical" })
+set("n", "<C-q>", ":q<Cr>", { desc = "Delete window", silent = true })
 
 set("n", "<CR>", "o<esc>", { desc = "Add empty line below" })
 set("n", "<leader>j", "mzJ`z", { desc = "<leader>j Joins line preserving cursor" })

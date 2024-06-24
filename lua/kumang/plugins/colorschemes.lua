@@ -11,10 +11,12 @@ return {
 			styles = {
 				functions = { "italic", "bold" },
 				variables = { "bold" },
+				comments = { "underline", "italic" },
 			},
 			integrations = {
 				cmp = true,
 				nvimtree = true,
+				leap = true,
 				treesitter = true,
 				harpoon = true,
 				notify = true,
@@ -56,6 +58,8 @@ return {
 					return {
 						LineNr = { fg = mocha.flamingo },
 						Whitespace = { fg = mocha.lavender },
+						Comment = { fg = "#60fa19" },
+						String = { fg = mocha.red },
 					}
 				end,
 			},
