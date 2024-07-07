@@ -23,7 +23,7 @@ return {
 						buffer_selected = {
 							bold = true,
 							italic = true,
-							fg = mocha.blue,
+							fg = mocha.sky,
 						},
 						background = {
 							fg = "#aaaaaa",

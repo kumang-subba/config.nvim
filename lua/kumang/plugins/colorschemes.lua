@@ -59,7 +59,6 @@ return {
 						LineNr = { fg = mocha.flamingo },
 						Whitespace = { fg = mocha.lavender },
 						Comment = { fg = "#60fa19" },
-						String = { fg = mocha.red },
 					}
 				end,
 			},

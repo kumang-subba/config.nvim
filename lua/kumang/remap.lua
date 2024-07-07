@@ -6,18 +6,18 @@ set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
 set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
 set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
-set("n", "<C-s>", "<C-w>s", { desc = "Split window vertical" })
+set("n", "<leader>s", "<C-w>s", { desc = "Split window vertical" })
 set("n", "<C-q>", ":q<Cr>", { desc = "Delete window", silent = true })
+set("n", "<C-s>", "<C-x>", { desc = "Substract number" })
 
 set("n", "<CR>", "o<esc>", { desc = "Add empty line below" })
+set("n", "<S-CR>", "O<esc>", { desc = "Add enmpty line above" })
 set("n", "<leader>j", "mzJ`z", { desc = "<leader>j Joins line preserving cursor" })
 
 set("v", "J", ":m '>+1<CR>gv=gv", { silent = true, desc = "J move line in visual mode" })
 set("v", "K", ":m '<-2<CR>gv=gv", { silent = true, desc = "K move line in visual mode" })
 
 set("n", "<leader>d", "dd", { desc = "Delete one line" })
-set("n", "<leader>y", "yy", { desc = "Yank one line" })
-set("n", "<leader>c", "cc", { desc = "Change one line" })
 
 set("n", "J", "5j", { desc = "J = 5j" })
 set("n", "K", "5k", { desc = "K = 5k" })
@@ -26,7 +26,6 @@ set("n", "<C-d>", "<C-d>zz", { desc = "Center screen on C-d" })
 set("n", "<C-u>", "<C-u>zz", { desc = "Center screen on C-u" })
 set("n", "n", "nzzzv", { desc = "Center screen on forward search" })
 set("n", "N", "Nzzzv", { desc = "Center screen on back search" })
-
 set("o", "L", "$", { desc = "Go to end of line on operator pending mode" })
 set("o", "H", "^", { desc = "Go to start of line on operator pending mode" })
 
@@ -57,7 +56,7 @@ set("v", "<A-j>", ":m '>+1<CR>gv=gv", { silent = true, desc = "Alt j move line u
 set("v", "<A-k>", ":m '<-2<CR>gv=gv", { silent = true, desc = "Alt k move line up v mode" })
 
 -- NOTE: Turn on/off format on save
-set("n", "<leader>fq", ":autocmd! BufWritePre<Cr>", { desc = "Disalbe autoformat on save", silent = true })
+set("n", "<leader>fq", ":autocmd! BufWritePre<Cr>", { desc = "Disable autoformat on save", silent = true })
 set("n", "<leader>fs", function()
 	vim.api.nvim_create_autocmd("BufWritePre", {
 		callback = function(args)

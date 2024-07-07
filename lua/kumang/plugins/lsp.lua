@@ -135,8 +135,14 @@ return {
 						{ buffer = 0, desc = "Code type Definition" }
 					)
 					vim.keymap.set("n", "gh", vim.lsp.buf.hover, { buffer = 0, desc = "Code Hover" })
-					vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { buffer = 0, desc = "Code rename" })
-					vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = 0, desc = "Code Action" })
+					vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { desc = "Code rename" })
+					vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
+					vim.keymap.set(
+						"n",
+						"<leader>lr",
+						"<cmd>LspRestart<CR>",
+						{ silent = true, desc = "Lsp server restart" }
+					)
 
 					local filetype = vim.bo[bufnr].filetype
 					if disable_semantic_tokens[filetype] then
@@ -160,13 +166,6 @@ return {
 					markdown = { "prettier" },
 					yaml = { "prettier" },
 				},
-				format_on_save = function(bufnr)
-					local bufname = vim.api.nvim_buf_get_name(bufnr)
-					if bufname:match("/node_modules/") then
-						return
-					end
-					return { lsp_fallback = true, timeout_ms = 500 }
-				end,
 			})
 
 			-- Customize prettier args
@@ -211,6 +210,8 @@ return {
 				callback = function(args)
 					require("conform").format({
 						bufnr = args.buf,
+						lsp_fallback = true,
+						quiet = true,
 					})
 				end,
 			})
