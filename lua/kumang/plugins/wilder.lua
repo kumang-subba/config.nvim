@@ -6,7 +6,6 @@ return {
 			modes = { ":", "/", "?" },
 			next_key = "<C-j>",
 			previous_key = "<C-k>",
-			accept_key = "<Cr>",
 		})
 
 		local popupmenu_renderer = wilder.popupmenu_renderer(wilder.popupmenu_palette_theme({
