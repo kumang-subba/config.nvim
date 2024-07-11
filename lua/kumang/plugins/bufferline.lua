@@ -10,6 +10,8 @@ return {
 		{ "<leader>bl", "<Cmd>BufferLineCloseLeft<cr>", desc = "Delete Buffers to the Left" },
 		{ "<S-h>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev Buffer" },
 		{ "<S-l>", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
+		{ "5", "<cmd>BufferLineMovePrev<cr>", desc = "Move buffer left" },
+		{ "6", "<cmd>BufferLineMoveNext<cr>", desc = "Move buffer right" },
 		{ "[b", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev Buffer" },
 		{ "]b", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
 	},
@@ -35,10 +37,6 @@ return {
 				diagnostics = "nvim_lsp",
 				separator_style = "slope",
 				always_show_bufferline = true,
-				indicator = {
-					icon = "",
-					style = "icon",
-				},
 				diagnostics_indicator = function(_, _, diag)
 					local icons = {
 						Error = " ",

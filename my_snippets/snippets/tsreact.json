@@ -1,0 +1,34 @@
+{
+  "typescriptCustomReactFCComponent": {
+    "key": "typescriptCustomReactFCComponent",
+    "prefix": "fc",
+    "description": "Create a React function component with Typescript interface",
+    "body": [
+      "interface ${1:${TM_FILENAME_BASE}}Props {",
+      "",
+      "};",
+      "",
+      "const ${1:${TM_FILENAME_BASE}}:React.FC<${1:${TM_FILENAME_BASE}}Props> = ({}) => {",
+      "return (",
+      "  <div>${1:first}</div>",
+      ")",
+      "};",
+      "",
+      "export default ${1:${TM_FILENAME_BASE}};"
+    ]
+  },
+  "typescriptCustomReactFCComponentNoInterface": {
+    "key": "typescriptCustomReactFCComponentNoInterface",
+    "prefix": "nfc",
+    "description": "Create a React function component without Typescript interface",
+    "body": [
+      "const ${1:${TM_FILENAME_BASE}}:React.FC = ({}) => {",
+      "return (",
+      "  <div>${1:first}</div>",
+      ")",
+      "};",
+      "",
+      "export default ${1:${TM_FILENAME_BASE}};"
+    ]
+  }
+}
