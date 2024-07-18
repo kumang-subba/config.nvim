@@ -18,6 +18,7 @@ set("v", "J", ":m '>+1<CR>gv=gv", { silent = true, desc = "J move line in visual
 set("v", "K", ":m '<-2<CR>gv=gv", { silent = true, desc = "K move line in visual mode" })
 
 set("n", "<leader>d", "dd", { desc = "Delete one line" })
+set("n", "<leader>y", "yy", { desc = "Yank one line" })
 
 set("n", "J", "5j", { desc = "J = 5j" })
 set("n", "K", "5k", { desc = "K = 5k" })

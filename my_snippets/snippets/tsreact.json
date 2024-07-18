@@ -30,5 +30,19 @@
       "",
       "export default ${1:${TM_FILENAME_BASE}};"
     ]
+  },
+  "customuseState": {
+    "key": "customUseStateSnippet",
+    "prefix": "uS",
+    "body": [
+      "const [${1:first}, set${1/(.*)/${1:/capitalize}/}] = useState<>()"
+    ],
+    "scope": "typescript,typescriptreact,javascript,javascriptreact"
+  },
+  "customuseRef": {
+    "key": "customUseRefSnippet",
+    "prefix": "uR",
+    "body": ["const ${1:first} = useRef<>()"],
+    "scope": "typescript,typescriptreact,javascript,javascriptreact"
   }
 }
