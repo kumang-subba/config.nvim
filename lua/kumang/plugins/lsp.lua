@@ -123,7 +123,7 @@ return {
 						"n",
 						"<leader>o",
 						":OrganizeImports<Cr>",
-						{ silent = true, desc = "Code Declaraction" }
+						{ silent = true, desc = "Code Imports Organize" }
 					)
 					vim.keymap.set(
 						"n",

@@ -7,17 +7,28 @@ return {
 	end,
 	config = function()
 		require("which-key")
-		-- Document existing key chains
-		require("which-key").register({
-			["<leader>f"] = { name = "Find", _ = "which_key_ignore" },
-			["<leader>t"] = { name = "Test", _ = "which_key_ignore" },
-			["<leader>h"] = { name = "Git Hunk", _ = "which_key_ignore" },
-			["<leader>b"] = { name = "Debug and Buffers", _ = "which_key_ignore" },
-			["<leader>l"] = { name = "Live server", _ = "which_key_ignore" },
+		local icons = require("nvim-web-devicons").get_icons()
+		local gif = require("nvim-web-devicons").get_icon("gif")
+		require("which-key").add({
+			{ "<leader>e", desc = "Nvim tree", icon = { icon = gif } },
+			{ "<leader>-", desc = "Oil floating window", icon = { icon = gif } },
+			{ "<leader>c", group = "Lsp code actions" },
+			{ "<leader>c_", hidden = true },
+			{ "<leader>b", group = "Debug and Buffers" },
+			{ "<leader>b_", hidden = true },
+			{ "<leader>f", group = "Find" },
+			{ "<leader>f_", hidden = true },
+			{ "<leader>h", group = "Git Hunk" },
+			{ "<leader>h_", hidden = true },
+			{ "<leader>l", group = "Lazy,Live Server,LSPrestart" },
+			{ "<leader>t", group = "Test" },
+			{ "<leader>t_", hidden = true },
+			{ "<leader>h_", group = "Git Hunk", mode = "v", icon = icons.Git },
+			{ "<leader>u", desc = "Git undo tree", icon = icons.Git },
+			{ "<leader>d", hidden = true },
+			{ "<leader>y", hidden = true },
+			{ "<leader>j", hidden = true },
+			{ "<leader>a", hidden = true },
 		})
-		-- visual mode
-		require("which-key").register({
-			["<leader>h"] = { "Git Hunk" },
-		}, { mode = "v" })
 	end,
 }
