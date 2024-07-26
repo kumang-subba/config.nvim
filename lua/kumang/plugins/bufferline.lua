@@ -30,13 +30,20 @@ return {
 						background = {
 							fg = "#aaaaaa",
 						},
+						indicator_selected = {
+							fg = mocha.blue,
+						},
 					},
 				},
 			}),
 			options = {
 				diagnostics = "nvim_lsp",
-				separator_style = "slope",
+				separator_style = "thin",
 				always_show_bufferline = true,
+				indicator = {
+					icon = "  ",
+					style = "icon",
+				},
 				diagnostics_indicator = function(_, _, diag)
 					local icons = {
 						Error = " ",

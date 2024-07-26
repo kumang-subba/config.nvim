@@ -63,7 +63,6 @@ return {
 						},
 					},
 				},
-
 				jsonls = {
 					settings = {
 						json = {
@@ -72,6 +71,7 @@ return {
 						},
 					},
 				},
+				eslint = true,
 			}
 
 			local servers_to_install = vim.tbl_filter(function(key)
@@ -90,6 +90,7 @@ return {
 				"lua_ls",
 				"js-debug-adapter",
 				"prettier",
+				"eslint",
 			}
 
 			vim.list_extend(ensure_installed, servers_to_install)

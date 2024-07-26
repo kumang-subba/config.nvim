@@ -8,13 +8,13 @@ return {
 			"nvim-neotest/nvim-nio",
 			"williamboman/mason.nvim",
 			{
-				"microsoft/vscode-js-debug",
-				-- After install, build it and rename the dist directory to out
-				build = "npm install --legacy-peer-deps --no-save && npx gulp vsDebugServerBundle && rm -rf out && mv dist out",
-				version = "1.*",
-			},
-			{
 				"mxsdev/nvim-dap-vscode-js",
+				dependencies = {
+
+					"microsoft/vscode-js-debug",
+					-- After install, build it and rename the dist directory to out
+					build = "npm install --legacy-peer-deps --no-save && npx gulp vsDebugServerBundle && rm -rf out && mv dist out",
+				},
 				config = function()
 					---@diagnostic disable-next-line: missing-fields
 					require("dap-vscode-js").setup({
