@@ -22,7 +22,7 @@
     "prefix": "nfc",
     "description": "Create a React function component without Typescript interface",
     "body": [
-      "const ${1:${TM_FILENAME_BASE}}:React.FC = ({}) => {",
+      "const ${1:${TM_FILENAME_BASE}}:React.FC = () => {",
       "return (",
       "  <div>${1:first}</div>",
       ")",
@@ -34,9 +34,7 @@
   "customuseState": {
     "key": "customUseStateSnippet",
     "prefix": "uS",
-    "body": [
-      "const [${1:first}, set${1/(.*)/${1:/capitalize}/}] = useState<>()"
-    ],
+    "body": ["const [${1:first}, set${1/(.*)/${1:/capitalize}/}] = useState<>()"],
     "scope": "typescript,typescriptreact,javascript,javascriptreact"
   },
   "customuseRef": {

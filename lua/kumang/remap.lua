@@ -2,10 +2,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 local set = vim.keymap.set
-set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
-set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
-set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
-set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+
 set("n", ";", ":vertical ", { desc = "Open ':' with vertical" })
 set("n", "<leader>s", "<C-w>s", { desc = "Split window vertical" })
 set("n", "<C-q>", ":q<Cr>", { desc = "Delete window", silent = true })
@@ -35,11 +32,6 @@ set("n", "<leader>w", ":w<CR>", { silent = true, desc = "Save file" })
 
 set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = "Go back to Explorer" })
 
-set("n", "<C-Up>", "<cmd>resize +5<cr>", { desc = "Increase Window Height" })
-set("n", "<C-Down>", "<cmd>resize -5<cr>", { desc = "Decrease Window Height" })
-set("n", "<C-Left>", "<cmd>vertical resize -5<cr>", { desc = "Decrease Window Width" })
-set("n", "<C-Right>", "<cmd>vertical resize +5<cr>", { desc = "Increase Window Width" })
-
 set("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
 set("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
 set("n", "<leader>q", "<cmd>:bd<cr>", { desc = "Delete Buffer and Window" })
@@ -47,7 +39,6 @@ set("n", "<leader>q", "<cmd>:bd<cr>", { desc = "Delete Buffer and Window" })
 set("n", "<leader>ll", "<cmd>Lazy<cr>", { desc = "Lazy" })
 
 -- NOTE: Live-server
-
 set("n", "<leader>ls", ":LiveServerStart<CR>", { desc = "Live server start", silent = true })
 set("n", "<leader>lq", ":LiveServerStop<CR>", { desc = "Live server stop", silent = true })
 
