@@ -48,7 +48,7 @@ return {
 				},
 				-- NOTE: dont forget: sudo apt install libstdc++-12-dev
 
-				tsserver = {
+				ts_ls = {
 					commands = {
 						OrganizeImports = {
 							function()

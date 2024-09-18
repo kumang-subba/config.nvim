@@ -1,6 +1,12 @@
 return {
 	"3rd/image.nvim",
 	dependencies = { "luarocks.nvim" },
+	enabled = function()
+		if vim.g.neovide then
+			return false
+		end
+		return true
+	end,
 	config = function()
 		require("image").setup({
 			backend = "kitty",

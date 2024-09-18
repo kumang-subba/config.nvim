@@ -1,6 +1,5 @@
 return {
-	"feline-nvim/feline.nvim",
-	branch = "0.5-compat",
+	"freddiehaddad/feline.nvim",
 	config = function()
 		require("kumang.feline")
 	end,

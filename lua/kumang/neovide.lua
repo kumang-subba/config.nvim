@@ -1,6 +1,10 @@
-vim.g.neovide_fullscreen = true
-vim.g.neovide_transparency = 0.7
+-- vim.g.neovide_fullscreen = true
+vim.g.neovide_transparency = 1
 vim.g.neovide_cursor_animate_command_line = false
-vim.o.guifont = "JetBrains Mono"
+vim.o.guifont = "JetBrainsMono Nerd Font"
 vim.g.neovide_cursor_trail_size = 0.8
 vim.g.neovide_cursor_antialiasing = true
+vim.g.neovide_floating_shadow = false
+vim.g.neovide_theme = "auto"
+vim.g.neovide_scale_factor = 1.1
+vim.g.transparency = 0.2
