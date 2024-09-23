@@ -36,10 +36,10 @@ return {
 		vim.keymap.set("n", "<C-S-k>", require("smart-splits").resize_up, { desc = "Resize up" })
 		vim.keymap.set("n", "<C-S-l>", require("smart-splits").resize_right, { desc = "Resize right" })
 
-		vim.keymap.set("n", "<C-S-Left>", require("smart-splits").resize_left, { desc = "Resize left" })
-		vim.keymap.set("n", "<C-S-Down>", require("smart-splits").resize_down, { desc = "Resize down" })
-		vim.keymap.set("n", "<C-S-Up>", require("smart-splits").resize_up, { desc = "Resize up" })
-		vim.keymap.set("n", "<C-S-Right>", require("smart-splits").resize_right, { desc = "Resize right" })
+		vim.keymap.set("n", "<C-M-Left>", require("smart-splits").resize_left, { desc = "Resize left" })
+		vim.keymap.set("n", "<C-M-Down>", require("smart-splits").resize_down, { desc = "Resize down" })
+		vim.keymap.set("n", "<C-M-Up>", require("smart-splits").resize_up, { desc = "Resize up" })
+		vim.keymap.set("n", "<C-M-Right>", require("smart-splits").resize_right, { desc = "Resize right" })
 		-- moving between splits
 
 		vim.keymap.set("n", "<C-h>", require("smart-splits").move_cursor_left, { desc = "Move cursor left" })
