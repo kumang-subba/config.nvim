@@ -4,8 +4,8 @@ return {
 		local wilder = require("wilder")
 		wilder.setup({
 			modes = { ":", "/", "?" },
-			next_key = "<C-j>",
-			previous_key = "<C-k>",
+			next_key = "<C-down>",
+			previous_key = "<C-up>",
 		})
 
 		local popupmenu_renderer = wilder.popupmenu_renderer(wilder.popupmenu_palette_theme({
