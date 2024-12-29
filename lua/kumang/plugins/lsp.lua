@@ -33,6 +33,7 @@ return {
 				rust_analyzer = true,
 				cssls = true,
 				tailwindcss = true,
+				pyright = true,
 				clangd = {
 					cmd = {
 						"clangd",
@@ -91,6 +92,7 @@ return {
 				"js-debug-adapter",
 				"prettier",
 				"eslint",
+				"pyright",
 			}
 
 			vim.list_extend(ensure_installed, servers_to_install)

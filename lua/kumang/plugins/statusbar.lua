@@ -40,6 +40,20 @@ return {
 				theme = "catppuccin",
 			},
 			sections = {
+				lualine_a = {
+					{
+						"mode",
+						icons_enabled = true,
+						icon = " ",
+						separator = nil,
+						cond = nil,
+						draw_empty = false,
+						color = nil,
+						type = nil,
+						fmt = nil,
+						on_click = nil,
+					},
+				},
 				lualine_c = {
 					{
 						"navic",

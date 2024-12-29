@@ -7,6 +7,7 @@ return {
 			"theHamsta/nvim-dap-virtual-text",
 			"nvim-neotest/nvim-nio",
 			"williamboman/mason.nvim",
+			"folke/neodev.nvim",
 			{
 				"mxsdev/nvim-dap-vscode-js",
 				dependencies = {
@@ -57,6 +58,9 @@ return {
 				"javascriptreact",
 				"vue",
 			}
+			require("neodev").setup({
+				library = { plugins = { "nvim-dap-ui" }, types = true },
+			})
 			local dap = require("dap")
 			local ui = require("dapui")
 
@@ -64,6 +68,31 @@ return {
 				id = "cppdbg",
 				type = "executable",
 				command = "/home/kumang/.local/cpptools-linux/extension/debugAdapters/bin/OpenDebugAD7",
+			}
+
+			dap.configurations.cpp = {
+				{
+					name = "Launch file",
+					type = "cppdbg",
+					request = "launch",
+					program = function()
+						return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+					end,
+					cwd = "${workspaceFolder}",
+					stopAtEntry = true,
+				},
+				{
+					name = "Attach to gdbserver :1234",
+					type = "cppdbg",
+					request = "launch",
+					MIMode = "gdb",
+					miDebuggerServerAddress = "localhost:1234",
+					miDebuggerPath = "/usr/bin/gdb",
+					cwd = "${workspaceFolder}",
+					program = function()
+						return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+					end,
+				},
 			}
 
 			for _, language in ipairs(js_based_languages) do
@@ -139,31 +168,6 @@ return {
 					return " " .. variable.value
 				end,
 			})
-
-			dap.configurations.cpp = {
-				{
-					name = "Launch file",
-					type = "cppdbg",
-					request = "launch",
-					program = function()
-						return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-					end,
-					cwd = "${workspaceFolder}",
-					stopAtEntry = true,
-				},
-				{
-					name = "Attach to gdbserver :1234",
-					type = "cppdbg",
-					request = "launch",
-					MIMode = "gdb",
-					miDebuggerServerAddress = "localhost:1234",
-					miDebuggerPath = "/usr/bin/gdb",
-					cwd = "${workspaceFolder}",
-					program = function()
-						return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-					end,
-				},
-			}
 
 			vim.keymap.set("n", "<space>bb", dap.toggle_breakpoint, { desc = "Debug: add breakpoint" })
 			vim.keymap.set("n", "<space>bc", dap.run_to_cursor, { desc = "Debug: run to cursor" })

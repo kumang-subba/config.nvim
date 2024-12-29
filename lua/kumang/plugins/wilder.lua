@@ -2,10 +2,19 @@ return {
 	"gelguy/wilder.nvim",
 	config = function()
 		local wilder = require("wilder")
+		local next_key
+		local previous_key
+		if vim.g.keyboard_format == "colemak_dhm" then
+			next_key = "<C-n>"
+			previous_key = "<C-e>"
+		else
+			next_key = "<C-down>"
+			previous_key = "<C-up>"
+		end
 		wilder.setup({
 			modes = { ":", "/", "?" },
-			next_key = "<C-down>",
-			previous_key = "<C-up>",
+			next_key = next_key,
+			previous_key = previous_key,
 		})
 
 		local popupmenu_renderer = wilder.popupmenu_renderer(wilder.popupmenu_palette_theme({
