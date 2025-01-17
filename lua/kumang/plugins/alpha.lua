@@ -32,9 +32,9 @@ return {
 		}
 
 		dashboard.section.buttons.val = {
-			dashboard.button(vim.g.keyboard_format and "l" or "n", "   New file", ":ene <BAR> startinsert <CR>"),
+			dashboard.button("n", "   New file", ":ene <BAR> startinsert <CR>"),
 			dashboard.button("f", "󰮗   Find file", ":Telescope find_files<CR>"),
-			dashboard.button(vim.g.keyboard_format and "h" or "e", "   File Explorer", ":Oil<CR>"),
+			dashboard.button("e", "   File Explorer", ":Oil<CR>"),
 			dashboard.button("r", "   Recent", ":Telescope oldfiles<CR>"),
 			dashboard.button("R", "󱘞   Ripgrep", ":Telescope live_grep<CR>"),
 			dashboard.button("q", "󰗼   Quit", ":qa<CR>"),

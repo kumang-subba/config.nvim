@@ -9,9 +9,10 @@ return {
 			term_colors = true,
 			transparent_background = true,
 			styles = {
-				functions = { "italic", "bold" },
+				functions = { "bold" },
 				variables = { "bold" },
 				comments = { "underline", "italic" },
+				keywords = { "italic" },
 			},
 			integrations = {
 				cmp = true,

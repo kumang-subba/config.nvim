@@ -33,6 +33,21 @@ return {
 				rust_analyzer = true,
 				cssls = true,
 				tailwindcss = true,
+				gopls = {
+					settings = {
+						gopls = {
+							hints = {
+								assignVariableTypes = true,
+								compositeLiteralFields = true,
+								compositeLiteralTypes = true,
+								constantValues = true,
+								functionTypeParameters = true,
+								parameterNames = true,
+								rangeVariableTypes = true,
+							},
+						},
+					},
+				},
 				pyright = true,
 				clangd = {
 					cmd = {
@@ -93,6 +108,9 @@ return {
 				"prettier",
 				"eslint",
 				"pyright",
+				"gopls",
+				"goimports",
+				"delve",
 			}
 
 			vim.list_extend(ensure_installed, servers_to_install)
@@ -165,6 +183,7 @@ return {
 					scss = { "prettier" },
 					markdown = { "prettier" },
 					yaml = { "prettier" },
+					go = { "goimports", "gofmt" },
 				},
 			})
 
