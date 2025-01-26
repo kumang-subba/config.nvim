@@ -44,8 +44,6 @@ set("o", "<S-left>", "^", { desc = "Go to start of line on operator pending mode
 
 set("n", "<leader>w", ":w<CR>", { silent = true, desc = "Save file" })
 
-set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = "Go back to Explorer" })
-
 set("n", "<S-left>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
 set("n", "<S-right>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
 
