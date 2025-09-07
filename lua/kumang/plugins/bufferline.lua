@@ -8,6 +8,10 @@ return {
 		{ "<leader>bo", "<Cmd>BufferLineCloseOthers<cr>", desc = "Delete Other Buffers" },
 		{ "<leader>br", "<Cmd>BufferLineCloseRight<cr>", desc = "Delete Buffers to the Right" },
 		{ "<leader>bl", "<Cmd>BufferLineCloseLeft<cr>", desc = "Delete Buffers to the Left" },
+		{ "<S-h>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev Buffer" },
+		{ "<S-l>", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
+		{ "<M-h>", "<cmd>BufferLineMovePrev<cr>", desc = "Move buffer left" },
+		{ "<M-l>", "<cmd>BufferLineMoveNext<cr>", desc = "Move buffer right" },
 		{ "<M-left>", "<cmd>BufferLineMovePrev<cr>", desc = "Move buffer left" },
 		{ "<M-right>", "<cmd>BufferLineMoveNext<cr>", desc = "Move buffer right" },
 		{ "[b", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev Buffer" },
@@ -17,7 +21,7 @@ return {
 		local bufferline = require("bufferline")
 		local mocha = require("catppuccin.palettes").get_palette("mocha")
 		bufferline.setup({
-			highlights = require("catppuccin.groups.integrations.bufferline").get({
+			highlights = require("catppuccin.groups.integrations.bufferline").get_theme({
 				custom = {
 					all = {
 						buffer_selected = {

@@ -14,10 +14,10 @@ return {
 		},
 		config = function()
 			require("neodev").setup({
-				-- library = {
-				--   plugins = { "nvim-dap-ui" },
-				--   types = true,
-				-- },
+				library = {
+					plugins = { "nvim-dap-ui" },
+					types = true,
+				},
 			})
 
 			local capabilities = nil
@@ -137,7 +137,7 @@ return {
 					local client = assert(vim.lsp.get_client_by_id(args.data.client_id), "must have valid client")
 
 					vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
-					vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = 0, desc = "Code Definition" })
+					-- vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = 0, desc = "Code Definition" })
 					vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = 0, desc = "Code References" })
 					vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = 0, desc = "Code Declaraction" })
 					vim.keymap.set(
@@ -148,7 +148,7 @@ return {
 					)
 					vim.keymap.set(
 						"n",
-						"gT",
+						"gt",
 						vim.lsp.buf.type_definition,
 						{ buffer = 0, desc = "Code type Definition" }
 					)
@@ -223,7 +223,6 @@ return {
 
 				return args
 			end
-
 			vim.api.nvim_create_autocmd("BufWritePre", {
 				pattern = "*",
 				callback = function(args)

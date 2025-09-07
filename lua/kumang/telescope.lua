@@ -1,6 +1,8 @@
 local actions = require("telescope.actions")
+local themes = require("telescope.themes")
+
 require("telescope").setup({
-	defaults = {
+	defaults = vim.tbl_extend("force", themes.get_dropdown(), {
 		mappings = {
 			n = {
 				["<C-j>"] = actions.move_selection_next,
@@ -11,7 +13,7 @@ require("telescope").setup({
 				["<C-k>"] = actions.move_selection_previous,
 			},
 		},
-	},
+	}),
 })
 
 local builtin = require("telescope.builtin")
@@ -20,10 +22,16 @@ vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope Find F
 vim.keymap.set("n", "<leader>fgf", builtin.git_files, { desc = "Telescope Find git Files" })
 vim.keymap.set("n", "<leader>fgc", builtin.git_commits, { desc = "Telescope Find git commits" })
 vim.keymap.set("n", "<leader>fgb", builtin.git_branches, { desc = "Telescope Find git branches" })
+vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope Find help tags" })
 vim.keymap.set("n", "<leader>fw", builtin.live_grep, { desc = "Telescope Find Word" })
 vim.keymap.set("n", "<leader>fc", builtin.grep_string, { desc = "Telescope Find Word under Cursor" })
 vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "Telescope Find diagnostics Files" })
 vim.keymap.set("n", "<leader>fk", builtin.keymaps, { desc = "Telescope Find keymap Files" })
+vim.keymap.set("n", "<leader>fs", builtin.lsp_document_symbols, { desc = "Telescope current document symbols" })
+vim.keymap.set("n", "<leader>fm", builtin.marks, { desc = "Telescope Find marks" })
+
+vim.keymap.set("n", "gd", builtin.lsp_definitions, { buffer = 0, desc = "Code Definition" })
+
 vim.keymap.set("n", "<leader>fn", function()
 	builtin.find_files({ cwd = vim.fn.stdpath("config") })
 end, { desc = "Telescope find files" })

@@ -37,6 +37,9 @@ set("n", "<leader>y", "yy", { desc = "Yank one line" })
 set("n", "<S-down>", "<C-d>zz", { desc = "Page down on s down arrow" })
 set("n", "<S-up>", "<C-u>zz", { desc = "Page up on s up arrow" })
 
+set("n", "J", "<C-d>zz", { desc = "Page down on s down arrow" })
+set("n", "K", "<C-u>zz", { desc = "Page up on s up arrow" })
+
 set("n", "<C-d>", "<C-d>zz", { desc = "Center screen on C-d" })
 set("n", "<C-u>", "<C-u>zz", { desc = "Center screen on C-u" })
 set("o", "<S-right>", "$", { desc = "Go to end of line on operator pending mode" })
