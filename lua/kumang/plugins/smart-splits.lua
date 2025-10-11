@@ -31,10 +31,10 @@ return {
 			kitty_password = nil,
 			log_level = "info",
 		})
-		vim.keymap.set("n", "<C-S-h>", require("smart-splits").resize_left, { desc = "Resize left" })
-		vim.keymap.set("n", "<C-S-j>", require("smart-splits").resize_down, { desc = "Resize down" })
-		vim.keymap.set("n", "<C-S-k>", require("smart-splits").resize_up, { desc = "Resize up" })
-		vim.keymap.set("n", "<C-S-l>", require("smart-splits").resize_right, { desc = "Resize right" })
+		vim.keymap.set("n", "<C-M-h>", require("smart-splits").resize_left, { desc = "Resize left" })
+		vim.keymap.set("n", "<C-M-j>", require("smart-splits").resize_down, { desc = "Resize down" })
+		vim.keymap.set("n", "<C-M-k>", require("smart-splits").resize_up, { desc = "Resize up" })
+		vim.keymap.set("n", "<C-M-l>", require("smart-splits").resize_right, { desc = "Resize right" })
 
 		vim.keymap.set("n", "<C-M-Left>", require("smart-splits").resize_left, { desc = "Resize left" })
 		vim.keymap.set("n", "<C-M-Down>", require("smart-splits").resize_down, { desc = "Resize down" })

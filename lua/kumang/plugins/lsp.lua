@@ -25,7 +25,7 @@ return {
 				capabilities = require("cmp_nvim_lsp").default_capabilities()
 			end
 
-			local lspconfig = require("lspconfig")
+			local lspconfig = vim.lsp.config
 
 			local servers = {
 				bashls = true,
@@ -124,7 +124,8 @@ return {
 					capabilities = capabilities,
 				}, config)
 
-				lspconfig[name].setup(config)
+				lspconfig(name,config)
+        vim.lsp.enable(name)
 			end
 
 			local disable_semantic_tokens = {
@@ -166,6 +167,18 @@ return {
 					if disable_semantic_tokens[filetype] then
 						client.server_capabilities.semanticTokensProvider = nil
 					end
+				end,
+			})
+
+			-- Hyprlang LSP
+			vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+				pattern = { "*.hl", "hypr*.conf" },
+				callback = function()
+					vim.lsp.start({
+						name = "hyprlang",
+						cmd = { "hyprls" },
+						root_dir = vim.fn.getcwd(),
+					})
 				end,
 			})
 

@@ -2,6 +2,7 @@ return {
 	"akinsho/bufferline.nvim",
 	lazy = false,
 	priority = 500,
+	after = "catppuccin",
 	keys = {
 		{ "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle Pin" },
 		{ "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete Non-Pinned Buffers" },
@@ -21,7 +22,7 @@ return {
 		local bufferline = require("bufferline")
 		local mocha = require("catppuccin.palettes").get_palette("mocha")
 		bufferline.setup({
-			highlights = require("catppuccin.groups.integrations.bufferline").get_theme({
+			highlights = require("catppuccin.special.bufferline").get_theme({
 				custom = {
 					all = {
 						buffer_selected = {

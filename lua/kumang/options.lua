@@ -54,3 +54,18 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	end,
 	desc = "Disable new line comment",
 })
+
+local function run_current_file()
+	local filename = vim.fn.expand("%:p")
+	local ext = vim.fn.expand("%:e")
+
+	if ext == "js" then
+		vim.cmd("10split | terminal node " .. filename)
+	elseif ext == "go" then
+		vim.cmd("10split | terminal go run " .. filename)
+	else
+		print("No runner defined for *." .. ext)
+	end
+end
+
+vim.keymap.set("n", "<leader>ce", run_current_file, { silent = true })
