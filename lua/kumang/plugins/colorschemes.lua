@@ -14,6 +14,14 @@ return {
 				comments = { "underline", "italic" },
 				keywords = { "italic" },
 			},
+			lsp_styles = {
+				underlines = {
+					errors = { "undercurl" },
+					hints = { "undercurl" },
+					warnings = { "undercurl" },
+					information = { "undercurl" },
+				},
+			},
 			integrations = {
 				cmp = true,
 				nvimtree = true,
@@ -50,7 +58,7 @@ return {
 				indent_blankline = {
 					enabled = true,
 					scope_color = "sapphire",
-					colored_indent_levels = false,
+					colored_indent_levels = true,
 				},
 			},
 			flavour = "mocha",
