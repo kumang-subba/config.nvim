@@ -4,17 +4,17 @@
     "prefix": "fc",
     "description": "Create a React function component with Typescript interface",
     "body": [
-      "interface ${1:${TM_FILENAME_BASE}}Props {",
+      "interface ${1}Props {",
       "",
       "};",
       "",
-      "const ${1:${TM_FILENAME_BASE}}:React.FC<${1:${TM_FILENAME_BASE}}Props> = ({}) => {",
+      "const ${1:${TM_FILENAME_BASE}}:React.FC<$1Props> = ({}) => {",
       "return (",
-      "  <div>${1:first}</div>",
+      "  <div>${1}</div>",
       ")",
       "};",
       "",
-      "export default ${1:${TM_FILENAME_BASE}};"
+      "export default ${1};"
     ]
   },
   "typescriptCustomReactFCComponentNoInterface": {
@@ -24,23 +24,29 @@
     "body": [
       "const ${1:${TM_FILENAME_BASE}}:React.FC = () => {",
       "return (",
-      "  <div>${1:first}</div>",
+      "  <div>${1}</div>",
       ")",
       "};",
       "",
-      "export default ${1:${TM_FILENAME_BASE}};"
+      "export default ${1};"
     ]
   },
   "customuseState": {
     "key": "customUseStateSnippet",
-    "prefix": "uS",
+    "prefix": "us",
     "body": ["const [${1:first}, set${1/(.*)/${1:/capitalize}/}] = useState<>()"],
     "scope": "typescript,typescriptreact,javascript,javascriptreact"
   },
   "customuseRef": {
     "key": "customUseRefSnippet",
-    "prefix": "uR",
+    "prefix": "ur",
     "body": ["const ${1:first} = useRef<>()"],
+    "scope": "typescript,typescriptreact,javascript,javascriptreact"
+  },
+  "customuseEffect": {
+    "key": "customUseEffectSnippet",
+    "prefix": "ue",
+    "body": ["useEffect(()=>{", "${1}", "},[])"],
     "scope": "typescript,typescriptreact,javascript,javascriptreact"
   }
 }

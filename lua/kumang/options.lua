@@ -13,6 +13,7 @@ opt.tabstop = 2
 opt.softtabstop = 2
 opt.expandtab = true
 opt.smartindent = true
+opt.shiftwidth = 2
 
 opt.wrap = false
 
@@ -63,6 +64,8 @@ local function run_current_file()
 		vim.cmd("10split | terminal node " .. filename)
 	elseif ext == "go" then
 		vim.cmd("10split | terminal go run " .. filename)
+	elseif ext == "ts" then
+		vim.cmd("10split | terminal ts-node " .. filename)
 	else
 		print("No runner defined for *." .. ext)
 	end

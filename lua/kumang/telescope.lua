@@ -13,6 +13,9 @@ require("telescope").setup({
 				["<C-k>"] = actions.move_selection_previous,
 			},
 		},
+		preview = {
+			treesitter = false,
+		},
 	}),
 })
 

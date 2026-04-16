@@ -1,8 +1,12 @@
 return {
-	"ggandor/leap.nvim",
-	name = "leap",
+	url = "https://codeberg.org/andyg/leap.nvim",
 	dependencies = { "tpope/vim-repeat" },
 	init = function()
-		require("leap").create_default_mappings()
+		vim.keymap.set({ "n", "x", "o" }, "s", "<Plug>(leap-forward)")
+		vim.keymap.set({ "n", "x", "o" }, "S", "<Plug>(leap-backward)")
+		vim.keymap.set("n", "gs", "<Plug>(leap-from-window)")
+
+		vim.keymap.set({ "x", "o" }, "x", "<Plug>(leap-forward-till)")
+		vim.keymap.set({ "x", "o" }, "X", "<Plug>(leap-backward-till)")
 	end,
 }

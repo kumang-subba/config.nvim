@@ -9,6 +9,12 @@ set("o", "L", "$", { desc = "Go to end of line on operator pending mode" })
 set("o", "H", "^", { desc = "Go to start of line on operator pending mode" })
 set("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
 set("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
+set(
+	"n",
+	"<leader>e",
+	"<cmd>lua vim.diagnostic.open_float()<CR>",
+	{ desc = "Open diagnostic under cursor", silent = true }
+)
 
 set("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev Buffer" })
 set("n", "<S-l>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next Buffer" })
@@ -20,7 +26,7 @@ set("n", "<A-k>", ":m .-2<CR>==", { silent = true, desc = "Alt k move line up n 
 set("v", "<A-j>", ":m '>+1<CR>gv=gv", { silent = true, desc = "Alt j move line up v mode" })
 set("v", "<A-k>", ":m '<-2<CR>gv=gv", { silent = true, desc = "Alt k move line up v mode" })
 
-set("n", "<leader>s", "<C-w>s", { desc = "Split window vertical" })
+set("n", "<leader>s", "<C-w>v", { desc = "Split window vertical" })
 set("n", "<C-q>", ":q<Cr>", { desc = "Delete window", silent = true })
 set("n", "<C-s>", "<C-x>", { desc = "Substract number" })
 
@@ -30,9 +36,6 @@ set("n", "<C-CR>", "O<esc>", { desc = "Add empty line above" })
 set("n", "<M-CR>", "O<esc>", { desc = "Add empty line above" })
 
 set("n", "<leader>j", "mzJ`z", { desc = "<leader>j Joins line preserving cursor" })
-
-set("n", "<leader>d", "dd", { desc = "Delete one line" })
-set("n", "<leader>y", "yy", { desc = "Yank one line" })
 
 set("n", "<S-down>", "<C-d>zz", { desc = "Page down on s down arrow" })
 set("n", "<S-up>", "<C-u>zz", { desc = "Page up on s up arrow" })

@@ -8,7 +8,6 @@ cmp.setup({
 			luasnip.lsp_expand(args.body)
 		end,
 	},
-	completion = { completeopt = "menu,menuone,noinsert" },
 	mapping = cmp.mapping.preset.insert({
 		["<C-j>"] = cmp.mapping.select_next_item(),
 		["<C-k>"] = cmp.mapping.select_prev_item(),
@@ -34,6 +33,10 @@ cmp.setup({
 	sources = {
 		{ name = "nvim_lsp" },
 		{ name = "luasnip" },
-		{ name = "path" },
+		option = {
+			pathMappings = {
+				["@"] = "${folder}/src",
+			},
+		},
 	},
 })

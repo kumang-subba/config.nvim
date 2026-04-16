@@ -27,11 +27,13 @@ return {
 				nvimtree = true,
 				leap = true,
 				treesitter = true,
+				telescope = { enabled = true },
 				harpoon = true,
 				notify = true,
 				neotest = true,
 				noice = true,
 				which_key = true,
+				fidget = true,
 				mason = true,
 				mini = {
 					enabled = true,

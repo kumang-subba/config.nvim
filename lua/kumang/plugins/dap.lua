@@ -3,11 +3,13 @@ return {
 		"mfussenegger/nvim-dap",
 		dependencies = {
 			"leoluz/nvim-dap-go",
-			"rcarriga/nvim-dap-ui",
+			-- "rcarriga/nvim-dap-ui",
+			"igorlfs/nvim-dap-view",
 			"theHamsta/nvim-dap-virtual-text",
 			"nvim-neotest/nvim-nio",
 			"williamboman/mason.nvim",
 			"folke/neodev.nvim",
+			"Jorenar/nvim-dap-disasm",
 			{
 				"mxsdev/nvim-dap-vscode-js",
 				dependencies = {
@@ -62,15 +64,82 @@ return {
 				library = { plugins = { "nvim-dap-ui" }, types = true },
 			})
 			local dap = require("dap")
-			local ui = require("dapui")
+			local ui = require("dap-view")
+			require("dap-disasm").setup({
+				-- Add disassembly view to elements of nvim-dap-ui
+				dapui_register = true,
+
+				-- Add disassembly view to nvim-dap-view
+				dapview_register = true,
+
+				-- If registered, pass section configuration to nvim-dap-view
+				dapview = {
+					keymap = "D",
+					label = "Disassembly [D]",
+					short_label = "󰒓 [D]",
+				},
+
+				-- Show winbar with buttons to step into the code with instruction granularity
+				-- This settings is overriden (disabled) if the dapview integration is enabled and the plugin is installed
+				winbar = {
+					enabled = true,
+					labels = {
+						step_into = "Step Into",
+						step_over = "Step Over",
+						step_back = "Step Back",
+					},
+					order = {
+						"step_into",
+						"step_over",
+						"step_back",
+					},
+				},
+				-- The sign to use for instruction the exectution is stopped at
+				sign = "DapStopped",
+
+				-- Number of instructions to show before the memory reference
+				ins_before_memref = 16,
+
+				-- Number of instructions to show after the memory reference
+				ins_after_memref = 16,
+
+				-- Columns to display in the disassembly view
+				columns = {
+					"address",
+					"instructionBytes",
+					"instruction",
+				},
+			})
+
+			ui.setup({
+				winbar = {
+					sections = { "watches", "scopes", "exceptions", "breakpoints", "threads", "repl", "disassembly" },
+					show_keymap_hints = false,
+				},
+				windows = {
+
+					size = 0.5,
+					position = "right",
+					terminal = {
+						size = 0.5,
+						position = "below",
+					},
+				},
+			})
+
+			dap.adapters.gdb = {
+				type = "executable",
+				command = "gdb",
+				args = { "--interpreter=dap", "--eval-command", "set print pretty on" },
+			}
 
 			dap.adapters.cppdbg = {
 				id = "cppdbg",
 				type = "executable",
-				command = "/home/kumang/.local/cpptools-linux/extension/debugAdapters/bin/OpenDebugAD7",
+				command = "/home/kumang/.config/cpptools/extension/debugAdapters/bin/OpenDebugAD7",
 			}
 
-			dap.configurations.cpp = {
+			dap.configurations.c = {
 				{
 					name = "Launch file",
 					type = "cppdbg",
@@ -80,20 +149,23 @@ return {
 					end,
 					cwd = "${workspaceFolder}",
 					stopAtEntry = true,
+					args = { "-exec set disassembly-flavor intel" },
 				},
-				{
-					name = "Attach to gdbserver :1234",
-					type = "cppdbg",
-					request = "launch",
-					MIMode = "gdb",
-					miDebuggerServerAddress = "localhost:1234",
-					miDebuggerPath = "/usr/bin/gdb",
-					cwd = "${workspaceFolder}",
-					program = function()
-						return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-					end,
-				},
+				-- {
+				-- 	name = "Attach to gdbserver :1234",
+				-- 	type = "cppdbg",
+				-- 	request = "launch",
+				-- 	MIMode = "gdb",
+				-- 	miDebuggerServerAddress = "localhost:1234",
+				-- 	miDebuggerPath = "/usr/bin/gdb",
+				-- 	cwd = "${workspaceFolder}",
+				-- 	program = function()
+				-- 		return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+				-- 	end,
+				-- },
 			}
+
+			dap.configurations.cpp = dap.configurations.c
 
 			for _, language in ipairs(js_based_languages) do
 				dap.configurations[language] = {
@@ -149,7 +221,6 @@ return {
 				}
 			end
 
-			require("dapui").setup()
 			require("dap-go").setup()
 
 			require("nvim-dap-virtual-text").setup({
@@ -168,17 +239,19 @@ return {
 				end,
 			})
 
-			vim.keymap.set("n", "<space>bb", dap.toggle_breakpoint, { desc = "Debug: add breakpoint" })
-			vim.keymap.set("n", "<space>bc", dap.run_to_cursor, { desc = "Debug: run to cursor" })
-			vim.keymap.set("n", "<space>bt", dap.terminate, { desc = "Debug: Quit debugger" })
+			vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, { desc = "Debug: add breakpoint" })
+			vim.keymap.set("n", "<leader>dx", dap.run_to_cursor, { desc = "Debug: run to cursor" })
+			vim.keymap.set("n", "<leader>dq", dap.terminate, { desc = "Debug: Quit debugger" })
 
-			vim.keymap.set("n", "<F1>", dap.continue)
-			vim.keymap.set("n", "<F2>", dap.step_into)
-			vim.keymap.set("n", "<F3>", dap.step_over)
-			vim.keymap.set("n", "<F4>", dap.step_out)
-			vim.keymap.set("n", "<F5>", dap.step_back)
-			vim.keymap.set("n", "<F10>", dap.restart)
-			vim.keymap.set("n", "<leader>bq", ui.close, { desc = "Close Debugger" })
+			vim.keymap.set("n", "<leader>dc", dap.continue, { desc = "Debugger continue" })
+			vim.keymap.set("n", "<leader>dsi", dap.step_into, { desc = "Debugger step into" })
+			vim.keymap.set("n", "<leader>dso", dap.step_over, { desc = "Debugger step over" })
+			vim.keymap.set("n", "<leader>dst", dap.step_out, { desc = "Debugger step out" })
+			vim.keymap.set("n", "<leader>dsb", dap.step_back, { desc = "Debugger step back" })
+			vim.keymap.set("n", "<leader>dr", dap.restart, { desc = "Debugger restart" })
+			vim.keymap.set("n", "<leader>du", function()
+				ui.toggle(true)
+			end, { desc = "Toggle Debugger" })
 
 			dap.listeners.before.attach.dapui_config = function()
 				ui.open()
@@ -187,10 +260,10 @@ return {
 				ui.open()
 			end
 			dap.listeners.before.event_terminated.dapui_config = function()
-				ui.close()
+				ui.close(true)
 			end
 			dap.listeners.before.event_exited.dapui_config = function()
-				ui.close()
+				ui.close(true)
 			end
 		end,
 	},

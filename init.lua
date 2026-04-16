@@ -18,6 +18,3 @@ require("lazy").setup({ import = "kumang/plugins" }, {
 		notify = false,
 	},
 })
-if vim.g.neovide then
-	require("kumang.neovide")
-end

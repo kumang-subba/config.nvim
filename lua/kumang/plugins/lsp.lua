@@ -6,7 +6,7 @@ return {
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
-			{ "j-hui/fidget.nvim", opts = {} },
+			{ "j-hui/fidget.nvim", opts = { notification = { window = { winblend = 0 } } } },
 			-- Autoformatting
 			"stevearc/conform.nvim",
 			-- Schema information
@@ -36,6 +36,9 @@ return {
 				gopls = {
 					settings = {
 						gopls = {
+							analyses = {
+								unusedparams = false,
+							},
 							hints = {
 								assignVariableTypes = true,
 								compositeLiteralFields = true,
@@ -48,6 +51,7 @@ return {
 						},
 					},
 				},
+				asm_lsp = true,
 				pyright = true,
 				clangd = {
 					cmd = {
@@ -88,6 +92,7 @@ return {
 					},
 				},
 				eslint = true,
+				terraformls = true,
 			}
 
 			local servers_to_install = vim.tbl_filter(function(key)
@@ -111,6 +116,9 @@ return {
 				"gopls",
 				"goimports",
 				"delve",
+				"ts_ls",
+				"terraform-ls",
+				"asm_lsp",
 			}
 
 			vim.list_extend(ensure_installed, servers_to_install)
@@ -124,8 +132,8 @@ return {
 					capabilities = capabilities,
 				}, config)
 
-				lspconfig(name,config)
-        vim.lsp.enable(name)
+				lspconfig(name, config)
+				vim.lsp.enable(name)
 			end
 
 			local disable_semantic_tokens = {
@@ -178,6 +186,19 @@ return {
 						name = "hyprlang",
 						cmd = { "hyprls" },
 						root_dir = vim.fn.getcwd(),
+					})
+				end,
+			})
+
+			-- Robot Framework LSP
+			vim.api.nvim_create_autocmd("FileType", {
+				pattern = "robot",
+				callback = function(args)
+					vim.lsp.start({
+						name = "robotframework-lsp",
+						cmd = { "robotframework_ls" },
+						root_dir = vim.fs.root(args.buf, { ".git", "tasks.py", "robot.yaml" }),
+						settings = {},
 					})
 				end,
 			})
