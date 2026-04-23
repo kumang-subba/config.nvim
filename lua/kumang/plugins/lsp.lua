@@ -2,7 +2,7 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
-			"folke/neodev.nvim",
+			"folke/lazydev.nvim",
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
@@ -13,10 +13,9 @@ return {
 			"b0o/SchemaStore.nvim",
 		},
 		config = function()
-			require("neodev").setup({
+			require("lazydev").setup({
 				library = {
 					plugins = { "nvim-dap-ui" },
-					types = true,
 				},
 			})
 

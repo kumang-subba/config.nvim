@@ -3,12 +3,12 @@ return {
 		"mfussenegger/nvim-dap",
 		dependencies = {
 			"leoluz/nvim-dap-go",
-			-- "rcarriga/nvim-dap-ui",
-			"igorlfs/nvim-dap-view",
+			"rcarriga/nvim-dap-ui",
+			-- "igorlfs/nvim-dap-view",
 			"theHamsta/nvim-dap-virtual-text",
 			"nvim-neotest/nvim-nio",
 			"williamboman/mason.nvim",
-			"folke/neodev.nvim",
+			"folke/lazydev.nvim",
 			"Jorenar/nvim-dap-disasm",
 			{
 				"mxsdev/nvim-dap-vscode-js",
@@ -60,27 +60,109 @@ return {
 				"javascriptreact",
 				"vue",
 			}
-			require("neodev").setup({
-				library = { plugins = { "nvim-dap-ui" }, types = true },
+			require("lazydev").setup({
+				library = { plugins = { "nvim-dap-ui" } },
 			})
 			local dap = require("dap")
-			local ui = require("dap-view")
-			require("dap-disasm").setup({
-				-- Add disassembly view to elements of nvim-dap-ui
-				dapui_register = true,
-
-				-- Add disassembly view to nvim-dap-view
-				dapview_register = true,
-
-				-- If registered, pass section configuration to nvim-dap-view
-				dapview = {
-					keymap = "D",
-					label = "Disassembly [D]",
-					short_label = "󰒓 [D]",
+			local ui = require("dapui")
+			ui.setup({
+				wrap = true,
+				controls = {
+					element = "repl",
+					enabled = true,
+					icons = {
+						disconnect = "",
+						pause = "",
+						play = "",
+						run_last = "",
+						step_back = "",
+						step_into = "",
+						step_out = "",
+						step_over = "",
+						terminate = "",
+					},
 				},
+				element_mappings = {},
+				expand_lines = true,
+				floating = {
+					border = "single",
+					mappings = {
+						close = { "q", "<Esc>" },
+					},
+				},
+				force_buffers = true,
+				icons = {
+					collapsed = "",
+					current_frame = "",
+					expanded = "",
+				},
+				layouts = {
+					{
+						elements = {
+							{
+								id = "scopes",
+								size = 0.25,
+							},
+							{
+								id = "breakpoints",
+								size = 0.25,
+							},
+							{
+								id = "stacks",
+								size = 0.25,
+							},
+							{
+								id = "watches",
+								size = 0.25,
+							},
+						},
+						position = "left",
+						size = 40,
+					},
+					{
+						elements = {
+							{
+								id = "repl",
+								size = 0.50,
+							},
+							{
+								id = "console",
+								size = 0.50,
+							},
+						},
+						position = "right",
+						size = 40,
+					},
+					{
+						elements = {
+							{ id = "disassembly", size = 1 },
+						},
+						position = "bottom",
+						size = 20,
+					},
+				},
+				mappings = {
+					edit = "e",
+					expand = { "<CR>", "<2-LeftMouse>" },
+					open = "o",
+					remove = "d",
+					repl = "r",
+					toggle = "t",
+				},
+				render = {
+					indent = 1,
+					max_value_lines = 100,
+				},
+			})
 
-				-- Show winbar with buttons to step into the code with instruction granularity
-				-- This settings is overriden (disabled) if the dapview integration is enabled and the plugin is installed
+			require("dap-disasm").setup({
+				dapui_register = true,
+				-- dapview_register = true,
+				-- dapview = {
+				-- 	keymap = "D",
+				-- 	label = "Disassembly",
+				-- 	short_label = "󰒓 [D]",
+				-- },
 				winbar = {
 					enabled = true,
 					labels = {
@@ -94,16 +176,9 @@ return {
 						"step_back",
 					},
 				},
-				-- The sign to use for instruction the exectution is stopped at
 				sign = "DapStopped",
-
-				-- Number of instructions to show before the memory reference
 				ins_before_memref = 16,
-
-				-- Number of instructions to show after the memory reference
 				ins_after_memref = 16,
-
-				-- Columns to display in the disassembly view
 				columns = {
 					"address",
 					"instructionBytes",
@@ -111,21 +186,31 @@ return {
 				},
 			})
 
-			ui.setup({
-				winbar = {
-					sections = { "watches", "scopes", "exceptions", "breakpoints", "threads", "repl", "disassembly" },
-					show_keymap_hints = false,
-				},
-				windows = {
-
-					size = 0.5,
-					position = "right",
-					terminal = {
-						size = 0.5,
-						position = "below",
-					},
-				},
-			})
+			-- For dap-view-nvim
+			-- local ui = require("dap-view")
+			-- ui.setup({
+			-- 	winbar = {
+			-- 		sections = {
+			-- 			"breakpoints",
+			-- 			"exceptions",
+			-- 			"watches",
+			-- 			"scopes",
+			-- 			"threads",
+			-- 			"repl",
+			-- 			"disassembly",
+			-- 		},
+			-- 		show_keymap_hints = true,
+			-- 	},
+			-- 	windows = {
+			--
+			-- 		size = 0.5,
+			-- 		position = "right",
+			-- 		terminal = {
+			-- 			size = 0.5,
+			-- 			position = "below",
+			-- 		},
+			-- 	},
+			-- })
 
 			dap.adapters.gdb = {
 				type = "executable",
@@ -241,7 +326,10 @@ return {
 
 			vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, { desc = "Debug: add breakpoint" })
 			vim.keymap.set("n", "<leader>dx", dap.run_to_cursor, { desc = "Debug: run to cursor" })
-			vim.keymap.set("n", "<leader>dq", dap.terminate, { desc = "Debug: Quit debugger" })
+			vim.keymap.set("n", "<leader>dq", function()
+				dap.terminate()
+				ui.close()
+			end, { desc = "Debug: Quit debugger" })
 
 			vim.keymap.set("n", "<leader>dc", dap.continue, { desc = "Debugger continue" })
 			vim.keymap.set("n", "<leader>dsi", dap.step_into, { desc = "Debugger step into" })
@@ -249,9 +337,7 @@ return {
 			vim.keymap.set("n", "<leader>dst", dap.step_out, { desc = "Debugger step out" })
 			vim.keymap.set("n", "<leader>dsb", dap.step_back, { desc = "Debugger step back" })
 			vim.keymap.set("n", "<leader>dr", dap.restart, { desc = "Debugger restart" })
-			vim.keymap.set("n", "<leader>du", function()
-				ui.toggle(true)
-			end, { desc = "Toggle Debugger" })
+			vim.keymap.set("n", "<leader>du", ui.close, { desc = "Close debugger" })
 
 			dap.listeners.before.attach.dapui_config = function()
 				ui.open()
@@ -260,10 +346,10 @@ return {
 				ui.open()
 			end
 			dap.listeners.before.event_terminated.dapui_config = function()
-				ui.close(true)
+				ui.close()
 			end
 			dap.listeners.before.event_exited.dapui_config = function()
-				ui.close(true)
+				ui.close()
 			end
 		end,
 	},
