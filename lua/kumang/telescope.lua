@@ -32,12 +32,12 @@ vim.keymap.set("n", "<leader>fk", builtin.keymaps, { desc = "Telescope Find keym
 vim.keymap.set("n", "<leader>fm", builtin.man_pages, { desc = "Telescope man pages" })
 
 vim.keymap.set("n", "<leader>cs", builtin.lsp_document_symbols, { desc = "Telescope current document symbols" })
-vim.keymap.set("n", "<leader>cd", builtin.diagnostics, { desc = "Telescope Find diagnostics Files" })
+vim.keymap.set("n", "<leader>cD", builtin.diagnostics, { desc = "Telescope Find diagnostics Files" })
 vim.keymap.set("n", "<leader>cr", builtin.lsp_references, { desc = "Telescope list LSP references" })
 vim.keymap.set("n", "<leader>ci", builtin.lsp_implementations, {
 	desc = "Goto the implementation of the word under the cursor if there's only one, otherwise show all options in Telescope",
 })
-vim.keymap.set("n", "<leader>cD", builtin.lsp_implementations, {
+vim.keymap.set("n", "<leader>cd", builtin.lsp_definitions, {
 	desc = "Goto the definition of the word under the cursor, if there's only one, otherwise show all options in Telescope",
 })
 
