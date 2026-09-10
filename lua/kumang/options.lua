@@ -66,9 +66,21 @@ local function run_current_file()
 		vim.cmd("10split | terminal go run " .. filename)
 	elseif ext == "ts" then
 		vim.cmd("10split | terminal ts-node " .. filename)
+	elseif ext == "c" then
+		vim.cmd("10split | terminal ./main")
 	else
 		print("No runner defined for *." .. ext)
 	end
 end
 
-vim.keymap.set("n", "<leader>ce", run_current_file, { silent = true })
+local function compile()
+	local ext = vim.fn.expand("%:e")
+	if ext == "c" then
+		vim.cmd("10split | terminal gcc main.c -o main")
+	else
+		print("No compile command defined for *." .. ext)
+	end
+end
+
+vim.keymap.set("n", "<leader>ce", run_current_file, { silent = true, desc = "Compile program if available" })
+vim.keymap.set("n", "<leader>cc", compile, { silent = true, desc = "Execute program if available" })

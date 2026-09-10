@@ -107,6 +107,7 @@ return {
 			local ensure_installed = {
 				"clangd",
 				"stylua",
+				"bashls",
 				"lua_ls",
 				"js-debug-adapter",
 				"prettier",
@@ -146,7 +147,7 @@ return {
 
 					vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
 					-- vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = 0, desc = "Code Definition" })
-					vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = 0, desc = "Code References" })
+					-- vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = 0, desc = "Code References" })
 					vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = 0, desc = "Code Declaraction" })
 					vim.keymap.set(
 						"n",
@@ -161,7 +162,7 @@ return {
 						{ buffer = 0, desc = "Code type Definition" }
 					)
 					vim.keymap.set("n", "gh", vim.lsp.buf.hover, { buffer = 0, desc = "Code Hover" })
-					vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { desc = "Code rename" })
+					vim.keymap.set("n", "<leader>cR", vim.lsp.buf.rename, { desc = "Code rename" })
 					vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
 					vim.keymap.set(
 						"n",

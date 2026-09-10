@@ -9,17 +9,18 @@ return {
 			term_colors = true,
 			transparent_background = true,
 			styles = {
-				functions = { "bold" },
-				variables = { "bold" },
+				functions = { "bold", "italic" },
+				-- variables = { "bold" },
 				comments = { "underline", "italic" },
 				keywords = { "italic" },
+				types = { "italic" },
 			},
 			lsp_styles = {
 				underlines = {
 					errors = { "undercurl" },
-					hints = { "undercurl" },
-					warnings = { "undercurl" },
-					information = { "undercurl" },
+					hints = { "underline" },
+					warnings = { "underdotted" },
+					information = { "underline" },
 				},
 			},
 			integrations = {

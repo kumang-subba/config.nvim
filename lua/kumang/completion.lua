@@ -33,10 +33,19 @@ cmp.setup({
 	sources = {
 		{ name = "nvim_lsp" },
 		{ name = "luasnip" },
+		{ name = "mkdnflow" },
 		option = {
 			pathMappings = {
 				["@"] = "${folder}/src",
 			},
 		},
+	},
+	formatting = {
+		format = function(entry, vim_item)
+			vim_item.menu = ({
+				mkdnflow = "[Mkdnflow]",
+			})[entry.source_name]
+			return vim_item
+		end,
 	},
 })

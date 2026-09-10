@@ -105,40 +105,30 @@ return {
 							},
 							{
 								id = "breakpoints",
-								size = 0.25,
+								size = 0.20,
 							},
 							{
 								id = "stacks",
-								size = 0.25,
+								size = 0.20,
 							},
 							{
 								id = "watches",
-								size = 0.25,
+								size = 0.20,
 							},
 						},
 						position = "left",
-						size = 40,
+						size = 30,
 					},
 					{
 						elements = {
+							{ id = "disassembly", size = 0.40 },
 							{
 								id = "repl",
-								size = 0.50,
+								size = 0.40,
 							},
-							{
-								id = "console",
-								size = 0.50,
-							},
-						},
-						position = "right",
-						size = 40,
-					},
-					{
-						elements = {
-							{ id = "disassembly", size = 1 },
 						},
 						position = "bottom",
-						size = 20,
+						size = 25,
 					},
 				},
 				mappings = {
@@ -183,6 +173,7 @@ return {
 					"address",
 					"instructionBytes",
 					"instruction",
+					"symbol",
 				},
 			})
 
@@ -215,7 +206,9 @@ return {
 			dap.adapters.gdb = {
 				type = "executable",
 				command = "gdb",
-				args = { "--interpreter=dap", "--eval-command", "set print pretty on" },
+				args = {
+					"--interpreter=dap",
+				},
 			}
 
 			dap.adapters.cppdbg = {
@@ -227,14 +220,37 @@ return {
 			dap.configurations.c = {
 				{
 					name = "Launch file",
-					type = "cppdbg",
+					type = "gdb",
 					request = "launch",
 					program = function()
 						return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
 					end,
 					cwd = "${workspaceFolder}",
-					stopAtEntry = true,
-					args = { "-exec set disassembly-flavor intel" },
+					stopAtBeginningOfMainSubprogram = false,
+					-- stopAtEntry = true,
+					-- setupCommands = {
+					-- 	{
+					-- 		text = "-enable-pretty-printing",
+					-- 		description = "Enable pretty printing",
+					-- 		ignoreFailures = true,
+					-- 	},
+					-- 	{
+					-- 		text = "set disassemble-next-line on",
+					-- 	},
+					-- 	{
+					-- 		text = "set disassembly-flavor intel",
+					-- 	},
+					-- },
+					args = function()
+						local input = vim.fn.input("Arguments: ")
+						local args = {}
+
+						for arg in input:gmatch("%S+") do
+							table.insert(args, arg)
+						end
+
+						return args
+					end,
 				},
 				-- {
 				-- 	name = "Attach to gdbserver :1234",

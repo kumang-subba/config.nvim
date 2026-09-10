@@ -28,10 +28,18 @@ vim.keymap.set("n", "<leader>fgb", builtin.git_branches, { desc = "Telescope Fin
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope Find help tags" })
 vim.keymap.set("n", "<leader>fw", builtin.live_grep, { desc = "Telescope Find Word" })
 vim.keymap.set("n", "<leader>fc", builtin.grep_string, { desc = "Telescope Find Word under Cursor" })
-vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "Telescope Find diagnostics Files" })
 vim.keymap.set("n", "<leader>fk", builtin.keymaps, { desc = "Telescope Find keymap Files" })
-vim.keymap.set("n", "<leader>fs", builtin.lsp_document_symbols, { desc = "Telescope current document symbols" })
-vim.keymap.set("n", "<leader>fm", builtin.marks, { desc = "Telescope Find marks" })
+vim.keymap.set("n", "<leader>fm", builtin.man_pages, { desc = "Telescope man pages" })
+
+vim.keymap.set("n", "<leader>cs", builtin.lsp_document_symbols, { desc = "Telescope current document symbols" })
+vim.keymap.set("n", "<leader>cd", builtin.diagnostics, { desc = "Telescope Find diagnostics Files" })
+vim.keymap.set("n", "<leader>cr", builtin.lsp_references, { desc = "Telescope list LSP references" })
+vim.keymap.set("n", "<leader>ci", builtin.lsp_implementations, {
+	desc = "Goto the implementation of the word under the cursor if there's only one, otherwise show all options in Telescope",
+})
+vim.keymap.set("n", "<leader>cD", builtin.lsp_implementations, {
+	desc = "Goto the definition of the word under the cursor, if there's only one, otherwise show all options in Telescope",
+})
 
 vim.keymap.set("n", "gd", builtin.lsp_definitions, { buffer = 0, desc = "Code Definition" })
 

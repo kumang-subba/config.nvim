@@ -15,8 +15,6 @@ return {
 		{ "<M-l>", "<cmd>BufferLineMoveNext<cr>", desc = "Move buffer right" },
 		{ "<M-left>", "<cmd>BufferLineMovePrev<cr>", desc = "Move buffer left" },
 		{ "<M-right>", "<cmd>BufferLineMoveNext<cr>", desc = "Move buffer right" },
-		{ "[b", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev Buffer" },
-		{ "]b", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
 	},
 	config = function()
 		local bufferline = require("bufferline")
