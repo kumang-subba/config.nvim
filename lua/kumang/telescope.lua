@@ -29,7 +29,9 @@ vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope Find he
 vim.keymap.set("n", "<leader>fw", builtin.live_grep, { desc = "Telescope Find Word" })
 vim.keymap.set("n", "<leader>fc", builtin.grep_string, { desc = "Telescope Find Word under Cursor" })
 vim.keymap.set("n", "<leader>fk", builtin.keymaps, { desc = "Telescope Find keymap Files" })
-vim.keymap.set("n", "<leader>fm", builtin.man_pages, { desc = "Telescope man pages" })
+vim.keymap.set("n", "<leader>fm", function()
+	builtin.man_pages({ sections = { "ALL" } })
+end, { desc = "Telescope man pages" })
 
 vim.keymap.set("n", "<leader>cs", builtin.lsp_document_symbols, { desc = "Telescope current document symbols" })
 vim.keymap.set("n", "<leader>cD", builtin.diagnostics, { desc = "Telescope Find diagnostics Files" })
