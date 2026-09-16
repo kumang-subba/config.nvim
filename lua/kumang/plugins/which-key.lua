@@ -10,8 +10,8 @@ return {
 		local icons = require("nvim-web-devicons").get_icons()
 		local gif = require("nvim-web-devicons").get_icon("gif")
 		require("which-key").add({
-			{ "<leader>e", desc = "Nvim tree", icon = { icon = gif } },
-			{ "<leader>-", desc = "Oil floating window", icon = { icon = gif } },
+			{ "<leader>e", desc = " Nvim tree", icon = { icon = gif } },
+			{ "<leader>-", desc = " Oil floating window", icon = { icon = gif } },
 			{ "<leader>c", group = "Lsp code actions" },
 			{ "<leader>c_", hidden = true },
 			{ "<leader>b", group = "Buffers" },
@@ -24,8 +24,8 @@ return {
 			{ "<leader>t", group = "Test" },
 			{ "<leader>t_", hidden = true },
 			{ "<leader>h_", group = "Git Hunk", mode = "v", icon = icons.Git },
-			{ "<leader>u", desc = "Git undo tree", icon = icons.Git },
-			{ "<leader>d", desc = "Debugger" },
+			{ "<leader>u", desc = " Git undo tree", icon = icons.Git },
+			{ "<leader>d", desc = " Debugger" },
 			{ "<leader>y", hidden = true },
 			{ "<leader>j", hidden = true },
 			{ "<leader>a", hidden = true },

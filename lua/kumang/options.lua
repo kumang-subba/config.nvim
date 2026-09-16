@@ -42,7 +42,7 @@ vim.o.laststatus = 3
 vim.api.nvim_set_hl(0, "highlightbg", { ctermbg = 0, bg = "#999999" })
 
 vim.api.nvim_create_autocmd("TextYankPost", {
-	desc = "Highlight when yanking (copying) text",
+	desc = " Highlight when yanking (copying) text",
 	group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
 	callback = function()
 		vim.highlight.on_yank({ timeout = 100, higroup = "highlightbg" })
@@ -53,7 +53,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	callback = function()
 		vim.opt.formatoptions:remove({ "c", "r", "o" })
 	end,
-	desc = "Disable new line comment",
+	desc = " Disable new line comment",
 })
 
 local function run_current_file()
@@ -82,5 +82,5 @@ local function compile()
 	end
 end
 
-vim.keymap.set("n", "<leader>ce", run_current_file, { silent = true, desc = "Compile program if available" })
-vim.keymap.set("n", "<leader>cc", compile, { silent = true, desc = "Execute program if available" })
+vim.keymap.set("n", "<leader>ce", run_current_file, { silent = true, desc = " Execute program if available" })
+vim.keymap.set("n", "<leader>cc", compile, { silent = true, desc = " Compile program if available" })

@@ -9,7 +9,7 @@ return {
 			term_colors = true,
 			transparent_background = true,
 			styles = {
-				functions = { "bold", "italic" },
+				functions = { "italic" },
 				-- variables = { "bold" },
 				comments = { "underline", "italic" },
 				keywords = { "italic" },
@@ -28,7 +28,7 @@ return {
 				nvimtree = true,
 				leap = true,
 				treesitter = true,
-				telescope = { enabled = true },
+				telescope = true,
 				harpoon = true,
 				notify = true,
 				neotest = true,

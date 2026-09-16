@@ -31,47 +31,47 @@ return {
 			kitty_password = nil,
 			log_level = "info",
 		})
-		vim.keymap.set("n", "<C-M-h>", require("smart-splits").resize_left, { desc = "Resize left" })
-		vim.keymap.set("n", "<C-M-j>", require("smart-splits").resize_down, { desc = "Resize down" })
-		vim.keymap.set("n", "<C-M-k>", require("smart-splits").resize_up, { desc = "Resize up" })
-		vim.keymap.set("n", "<C-M-l>", require("smart-splits").resize_right, { desc = "Resize right" })
+		vim.keymap.set("n", "<C-M-h>", require("smart-splits").resize_left, { desc = " Resize left" })
+		vim.keymap.set("n", "<C-M-j>", require("smart-splits").resize_down, { desc = " Resize down" })
+		vim.keymap.set("n", "<C-M-k>", require("smart-splits").resize_up, { desc = " Resize up" })
+		vim.keymap.set("n", "<C-M-l>", require("smart-splits").resize_right, { desc = " Resize right" })
 
-		vim.keymap.set("n", "<C-M-Left>", require("smart-splits").resize_left, { desc = "Resize left" })
-		vim.keymap.set("n", "<C-M-Down>", require("smart-splits").resize_down, { desc = "Resize down" })
-		vim.keymap.set("n", "<C-M-Up>", require("smart-splits").resize_up, { desc = "Resize up" })
-		vim.keymap.set("n", "<C-M-Right>", require("smart-splits").resize_right, { desc = "Resize right" })
+		vim.keymap.set("n", "<C-M-Left>", require("smart-splits").resize_left, { desc = " Resize left" })
+		vim.keymap.set("n", "<C-M-Down>", require("smart-splits").resize_down, { desc = " Resize down" })
+		vim.keymap.set("n", "<C-M-Up>", require("smart-splits").resize_up, { desc = " Resize up" })
+		vim.keymap.set("n", "<C-M-Right>", require("smart-splits").resize_right, { desc = " Resize right" })
 		-- moving between splits
 
-		vim.keymap.set("n", "<C-h>", require("smart-splits").move_cursor_left, { desc = "Move cursor left" })
-		vim.keymap.set("n", "<C-j>", require("smart-splits").move_cursor_down, { desc = "Move cursor down" })
-		vim.keymap.set("n", "<C-k>", require("smart-splits").move_cursor_up, { desc = "Move cursor up" })
-		vim.keymap.set("n", "<C-l>", require("smart-splits").move_cursor_right, { desc = "Move cursor right" })
-		vim.keymap.set("n", "<C-\\>", require("smart-splits").move_cursor_previous, { desc = "Move cursor previous" })
+		vim.keymap.set("n", "<C-h>", require("smart-splits").move_cursor_left, { desc = " Move cursor left" })
+		vim.keymap.set("n", "<C-j>", require("smart-splits").move_cursor_down, { desc = " Move cursor down" })
+		vim.keymap.set("n", "<C-k>", require("smart-splits").move_cursor_up, { desc = " Move cursor up" })
+		vim.keymap.set("n", "<C-l>", require("smart-splits").move_cursor_right, { desc = " Move cursor right" })
+		vim.keymap.set("n", "<C-\\>", require("smart-splits").move_cursor_previous, { desc = " Move cursor previous" })
 
-		vim.keymap.set("n", "<C-Left>", require("smart-splits").move_cursor_left, { desc = "Move cursor left" })
-		vim.keymap.set("n", "<C-Down>", require("smart-splits").move_cursor_down, { desc = "Move cursor down" })
-		vim.keymap.set("n", "<C-Up>", require("smart-splits").move_cursor_up, { desc = "Move cursor up" })
-		vim.keymap.set("n", "<C-Right>", require("smart-splits").move_cursor_right, { desc = "Move cursor right" })
-		vim.keymap.set("n", "<C-\\>", require("smart-splits").move_cursor_previous, { desc = "Move cursor previous" })
+		vim.keymap.set("n", "<C-Left>", require("smart-splits").move_cursor_left, { desc = " Move cursor left" })
+		vim.keymap.set("n", "<C-Down>", require("smart-splits").move_cursor_down, { desc = " Move cursor down" })
+		vim.keymap.set("n", "<C-Up>", require("smart-splits").move_cursor_up, { desc = " Move cursor up" })
+		vim.keymap.set("n", "<C-Right>", require("smart-splits").move_cursor_right, { desc = " Move cursor right" })
+		vim.keymap.set("n", "<C-\\>", require("smart-splits").move_cursor_previous, { desc = " Move cursor previous" })
 		-- swapping buffers between windows
 		vim.keymap.set(
 			"n",
 			"<leader><leader>h",
 			require("smart-splits").swap_buf_left,
-			{ desc = "Swap buffer with left" }
+			{ desc = " Swap buffer with left" }
 		)
 		vim.keymap.set(
 			"n",
 			"<leader><leader>j",
 			require("smart-splits").swap_buf_down,
-			{ desc = "Swap buffer with down" }
+			{ desc = " Swap buffer with down" }
 		)
-		vim.keymap.set("n", "<leader><leader>k", require("smart-splits").swap_buf_up, { desc = "Swap buffer with up" })
+		vim.keymap.set("n", "<leader><leader>k", require("smart-splits").swap_buf_up, { desc = " Swap buffer with up" })
 		vim.keymap.set(
 			"n",
 			"<leader><leader>l",
 			require("smart-splits").swap_buf_right,
-			{ desc = "Swap buffer with right" }
+			{ desc = " Swap buffer with right" }
 		)
 	end,
 }

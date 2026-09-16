@@ -146,29 +146,29 @@ return {
 					local client = assert(vim.lsp.get_client_by_id(args.data.client_id), "must have valid client")
 
 					vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
-					-- vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = 0, desc = "Code Definition" })
-					-- vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = 0, desc = "Code References" })
-					vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = 0, desc = "Code Declaraction" })
+					-- vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = 0, desc = " Code Definition" })
+					-- vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = 0, desc = " Code References" })
+					-- vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = 0, desc = " Code Declaraction" })
 					vim.keymap.set(
 						"n",
 						"<leader>o",
 						":OrganizeImports<Cr>",
-						{ silent = true, desc = "Code Imports Organize" }
+						{ silent = true, desc = " Code Imports Organize" }
 					)
 					vim.keymap.set(
 						"n",
 						"gt",
 						vim.lsp.buf.type_definition,
-						{ buffer = 0, desc = "Code type Definition" }
+						{ buffer = 0, desc = " Code type Definition" }
 					)
-					vim.keymap.set("n", "gh", vim.lsp.buf.hover, { buffer = 0, desc = "Code Hover" })
-					vim.keymap.set("n", "<leader>cR", vim.lsp.buf.rename, { desc = "Code rename" })
-					vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
+					vim.keymap.set("n", "gh", vim.lsp.buf.hover, { buffer = 0, desc = " Code Hover" })
+					vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { desc = " Code rename" })
+					vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = " Code Action" })
 					vim.keymap.set(
 						"n",
 						"<leader>lr",
 						"<cmd>LspRestart<CR>",
-						{ silent = true, desc = "Lsp server restart" }
+						{ silent = true, desc = " Lsp server restart" }
 					)
 
 					local filetype = vim.bo[bufnr].filetype

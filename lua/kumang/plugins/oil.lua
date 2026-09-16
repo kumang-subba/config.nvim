@@ -16,8 +16,8 @@ return {
 					end,
 				},
 			})
-			vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
-			vim.keymap.set("n", "<space>-", require("oil").toggle_float, { desc = "Open parent directory popup" })
+			vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = " Open parent directory" })
+			vim.keymap.set("n", "<space>-", require("oil").toggle_float, { desc = " Open parent directory popup" })
 		end,
 	},
 }

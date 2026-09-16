@@ -226,21 +226,7 @@ return {
 						return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
 					end,
 					cwd = "${workspaceFolder}",
-					stopAtBeginningOfMainSubprogram = false,
-					-- stopAtEntry = true,
-					-- setupCommands = {
-					-- 	{
-					-- 		text = "-enable-pretty-printing",
-					-- 		description = "Enable pretty printing",
-					-- 		ignoreFailures = true,
-					-- 	},
-					-- 	{
-					-- 		text = "set disassemble-next-line on",
-					-- 	},
-					-- 	{
-					-- 		text = "set disassembly-flavor intel",
-					-- 	},
-					-- },
+					stopAtBeginningOfMainSubprogram = true,
 					args = function()
 						local input = vim.fn.input("Arguments: ")
 						local args = {}
@@ -252,18 +238,6 @@ return {
 						return args
 					end,
 				},
-				-- {
-				-- 	name = "Attach to gdbserver :1234",
-				-- 	type = "cppdbg",
-				-- 	request = "launch",
-				-- 	MIMode = "gdb",
-				-- 	miDebuggerServerAddress = "localhost:1234",
-				-- 	miDebuggerPath = "/usr/bin/gdb",
-				-- 	cwd = "${workspaceFolder}",
-				-- 	program = function()
-				-- 		return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-				-- 	end,
-				-- },
 			}
 
 			dap.configurations.cpp = dap.configurations.c
@@ -340,20 +314,20 @@ return {
 				end,
 			})
 
-			vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, { desc = "Debug: add breakpoint" })
-			vim.keymap.set("n", "<leader>dx", dap.run_to_cursor, { desc = "Debug: run to cursor" })
+			vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, { desc = " Debug: add breakpoint" })
+			vim.keymap.set("n", "<leader>dx", dap.run_to_cursor, { desc = " Debug: run to cursor" })
 			vim.keymap.set("n", "<leader>dq", function()
 				dap.terminate()
 				ui.close()
-			end, { desc = "Debug: Quit debugger" })
+			end, { desc = " Debug: Quit debugger" })
 
-			vim.keymap.set("n", "<leader>dc", dap.continue, { desc = "Debugger continue" })
-			vim.keymap.set("n", "<leader>dsi", dap.step_into, { desc = "Debugger step into" })
-			vim.keymap.set("n", "<leader>dso", dap.step_over, { desc = "Debugger step over" })
-			vim.keymap.set("n", "<leader>dst", dap.step_out, { desc = "Debugger step out" })
-			vim.keymap.set("n", "<leader>dsb", dap.step_back, { desc = "Debugger step back" })
-			vim.keymap.set("n", "<leader>dr", dap.restart, { desc = "Debugger restart" })
-			vim.keymap.set("n", "<leader>du", ui.close, { desc = "Close debugger" })
+			vim.keymap.set("n", "<leader>dc", dap.continue, { desc = " Debugger continue" })
+			vim.keymap.set("n", "<leader>dsi", dap.step_into, { desc = " Debugger step into" })
+			vim.keymap.set("n", "<leader>dso", dap.step_over, { desc = " Debugger step over" })
+			vim.keymap.set("n", "<leader>dst", dap.step_out, { desc = " Debugger step out" })
+			vim.keymap.set("n", "<leader>dsb", dap.step_back, { desc = " Debugger step back" })
+			vim.keymap.set("n", "<leader>dr", dap.restart, { desc = " Debugger restart" })
+			vim.keymap.set("n", "<leader>du", ui.close, { desc = " Close debugger" })
 
 			dap.listeners.before.attach.dapui_config = function()
 				ui.open()
