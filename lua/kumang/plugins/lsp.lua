@@ -151,7 +151,7 @@ return {
 					-- vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = 0, desc = " Code Declaraction" })
 					vim.keymap.set(
 						"n",
-						"<leader>o",
+						"<leader>co",
 						":OrganizeImports<Cr>",
 						{ silent = true, desc = " Code Imports Organize" }
 					)
@@ -257,16 +257,39 @@ return {
 
 				return args
 			end
-			vim.api.nvim_create_autocmd("BufWritePre", {
-				pattern = "*",
-				callback = function(args)
-					require("conform").format({
-						bufnr = args.buf,
-						lsp_fallback = true,
-						quiet = true,
+
+			vim.api.nvim_create_augroup("FormatOnSave", {})
+
+			local function enable_format_on_save()
+				vim.api.nvim_create_autocmd("BufWritePre", {
+					pattern = "*",
+					group = "FormatOnSave",
+					callback = function(args)
+						require("conform").format({
+							bufnr = args.buf,
+							lsp_fallback = true,
+							quiet = true,
+						})
+					end,
+				})
+			end
+
+			enable_format_on_save()
+
+			vim.keymap.set("n", "<leader>ft", function()
+				local autocmds = vim.api.nvim_get_autocmds({
+					group = "FormatOnSave",
+				})
+				if #autocmds > 0 then
+					vim.api.nvim_clear_autocmds({
+						group = "FormatOnSave",
 					})
-				end,
-			})
+					vim.notify("Format on save: disabled")
+				else
+					enable_format_on_save()
+					vim.notify("Format on save: enabled")
+				end
+			end, { desc = "Toggle format on save" })
 		end,
 	},
 }

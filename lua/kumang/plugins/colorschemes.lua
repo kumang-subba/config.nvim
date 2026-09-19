@@ -12,8 +12,9 @@ return {
 				functions = { "italic" },
 				-- variables = { "bold" },
 				comments = { "underline", "italic" },
-				keywords = { "italic" },
+				keywords = { "italic", "bold" },
 				types = { "italic" },
+				strings = { "italic" },
 			},
 			lsp_styles = {
 				underlines = {

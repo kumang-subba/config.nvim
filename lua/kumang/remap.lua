@@ -44,6 +44,7 @@ set("o", "<S-right>", "$", { desc = " Go to end of line on operator pending mode
 set("o", "<S-left>", "^", { desc = " Go to start of line on operator pending mode" })
 
 set("n", "<leader>w", ":w<CR>", { silent = true, desc = " Save file" })
+set("n", "<leader>fs", ":w<CR>", { silent = true, desc = " Save file" })
 
 set("n", "<S-left>", "<cmd>bprevious<cr>", { desc = " Prev Buffer" })
 set("n", "<S-right>", "<cmd>bnext<cr>", { desc = " Next Buffer" })
@@ -63,15 +64,15 @@ set("v", "<M-up>", ":m '<-2<CR>gv=gv", { silent = true, desc = " Alt k move line
 set("t", "<esc><esc>", "<C-\\><C-n>", { silent = true, desc = " Escape in Terminal" })
 
 -- NOTE: Turn on/off format on save
-set("n", "<leader>fq", ":autocmd! BufWritePre<Cr>", { desc = " Disable autoformat on save", silent = true })
-set("n", "<leader>fs", function()
-	vim.api.nvim_create_autocmd("BufWritePre", {
-		callback = function(args)
-			require("conform").format({
-				bufnr = args.buf,
-				lsp_fallback = true,
-				quiet = true,
-			})
-		end,
-	})
-end, { desc = " Enable autoformat on save" })
+-- set("n", "<leader>fq", ":autocmd! BufWritePre<Cr>", { desc = " Disable autoformat on save", silent = true })
+-- set("n", "<leader>fs", function()
+-- 	vim.api.nvim_create_autocmd("BufWritePre", {
+-- 		callback = function(args)
+-- 			require("conform").format({
+-- 				bufnr = args.buf,
+-- 				lsp_fallback = true,
+-- 				quiet = true,
+-- 			})
+-- 		end,
+-- 	})
+-- end, { desc = " Enable autoformat on save" })
