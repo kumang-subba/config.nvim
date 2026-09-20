@@ -1,7 +1,6 @@
 return {
 	"catppuccin/nvim",
 	name = "catppuccin",
-	-- "folke/tokyonight.nvim",
 	lazy = false,
 	priority = 1000,
 	init = function()
@@ -10,7 +9,6 @@ return {
 			transparent_background = true,
 			styles = {
 				functions = { "italic" },
-				-- variables = { "bold" },
 				comments = { "underline", "italic" },
 				keywords = { "italic", "bold" },
 				types = { "italic" },
@@ -58,11 +56,6 @@ return {
 					inlay_hints = {
 						background = true,
 					},
-				},
-				indent_blankline = {
-					enabled = true,
-					scope_color = "sapphire",
-					colored_indent_levels = true,
 				},
 			},
 			flavour = "mocha",

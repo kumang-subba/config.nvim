@@ -9,7 +9,7 @@ return {
 				"prompt",
 			},
 			ignored_filetypes = { "NvimTree" },
-			default_amount = 3,
+			default_amount = 5,
 			at_edge = "wrap",
 			float_win_behavior = "previous",
 			move_cursor_same_row = false,
@@ -53,6 +53,22 @@ return {
 		vim.keymap.set("n", "<C-Up>", require("smart-splits").move_cursor_up, { desc = " Move cursor up" })
 		vim.keymap.set("n", "<C-Right>", require("smart-splits").move_cursor_right, { desc = " Move cursor right" })
 		vim.keymap.set("n", "<C-\\>", require("smart-splits").move_cursor_previous, { desc = " Move cursor previous" })
+
+		vim.keymap.set("n", "<leader>wh", require("smart-splits").move_cursor_left, { desc = " Move cursor left" })
+		vim.keymap.set("n", "<leader>wj", require("smart-splits").move_cursor_down, { desc = " Move cursor down" })
+		vim.keymap.set("n", "<leader>wk", require("smart-splits").move_cursor_up, { desc = " Move cursor up" })
+		vim.keymap.set("n", "<leader>wl", require("smart-splits").move_cursor_right, { desc = " Move cursor right" })
+
+		vim.keymap.set("n", "<leader>wH", require("smart-splits").resize_left, { desc = " Resize left" })
+		vim.keymap.set("n", "<leader>wJ", require("smart-splits").resize_down, { desc = " Resize down" })
+		vim.keymap.set("n", "<leader>wK", require("smart-splits").resize_up, { desc = " Resize up" })
+		vim.keymap.set("n", "<leader>wL", require("smart-splits").resize_right, { desc = " Resize right" })
+		vim.keymap.set(
+			"n",
+			"<leader>ww",
+			require("smart-splits").move_cursor_previous,
+			{ desc = " Move cursor previous" }
+		)
 		-- swapping buffers between windows
 		vim.keymap.set(
 			"n",

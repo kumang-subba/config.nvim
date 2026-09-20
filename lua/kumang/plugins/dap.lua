@@ -305,11 +305,9 @@ return {
 					if name:match("secret") or name:match("api") or value:match("secret") or value:match("api") then
 						return "*****"
 					end
-
 					if #variable.value > 15 then
 						return " " .. string.sub(variable.value, 1, 15) .. "... "
 					end
-
 					return " " .. variable.value
 				end,
 			})

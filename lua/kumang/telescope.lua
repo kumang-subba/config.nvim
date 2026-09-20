@@ -2,7 +2,7 @@ local actions = require("telescope.actions")
 local themes = require("telescope.themes")
 
 require("telescope").setup({
-	defaults = vim.tbl_extend("force", themes.get_dropdown(), {
+	defaults = vim.tbl_extend("force", themes.get_ivy(), {
 		mappings = {
 			n = {
 				["<C-j>"] = actions.move_selection_next,
@@ -16,6 +16,7 @@ require("telescope").setup({
 		preview = {
 			treesitter = false,
 		},
+		layout_config = { height = 0.5 },
 	}),
 })
 
@@ -47,3 +48,4 @@ vim.keymap.set("n", "<leader>fn", function()
 	builtin.find_files({ cwd = vim.fn.stdpath("config") })
 end, { desc = " Telescope find files" })
 vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = " Telescope Find existing buffers" })
+vim.keymap.set("n", "<leader>bb", builtin.buffers, { desc = " Telescope Find existing buffers" })
