@@ -39,7 +39,7 @@ opt.updatetime = 50
 opt.colorcolumn = "0"
 
 vim.o.laststatus = 3
-vim.api.nvim_set_hl(0, "highlightbg", { ctermbg = 0, bg = "#999999" })
+vim.api.nvim_set_hl(0, "highlightbg", { ctermbg = 0, bg = "#888888" })
 
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = " Highlight when yanking (copying) text",
