@@ -58,6 +58,10 @@ return {
 						navic_opts = nil,
 					},
 				},
+				lualine_x = {
+					"filename",
+					"filetype",
+				},
 			},
 		})
 	end,

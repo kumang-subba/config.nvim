@@ -13,16 +13,17 @@ set("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = " Prev Buffer" })
 set("n", "<S-l>", "<cmd>BufferLineCycleNext<cr>", { desc = " Next Buffer" })
 set("n", "<M-h>", "<cmd>BufferLineMovePrev<cr>", { desc = " Move buffer left" })
 set("n", "<M-l>", "<cmd>BufferLineMoveNext<cr>", { desc = " Move buffer right" })
+
 -- NOTE: Move line up and down with alt
 set("n", "<A-j>", ":m .+1<CR>==", { silent = true, desc = " Alt j move line down n mode" })
 set("n", "<A-k>", ":m .-2<CR>==", { silent = true, desc = " Alt k move line up n mode" })
 set("v", "<A-j>", ":m '>+1<CR>gv=gv", { silent = true, desc = " Alt j move line up v mode" })
 set("v", "<A-k>", ":m '<-2<CR>gv=gv", { silent = true, desc = " Alt k move line up v mode" })
 
-set("n", "<leader>ws", "<C-w>s", { desc = " Split window vertical" })
 set("n", "<leader>wv", "<C-w>v", { desc = " Split window vertical" })
-set("n", "<leader>s", "<C-w>v", { desc = " Split window vertical" })
-set("n", "<C-q>", ":bd<Cr>", { desc = " Delete Buffer and Window", silent = true })
+set("n", "<leader>ws", "<C-w>s", { desc = " Split window horizontal" })
+set("n", "<C-q>", ":q<Cr>", { desc = " Delete Buffer and Window", silent = true })
+set("n", "<leader>wd", ":q<Cr>", { desc = " Delete Buffer and Window", silent = true })
 set("n", "<C-s>", "<C-x>", { desc = " Substract number" })
 
 set("n", "<CR>", "o<esc>", { desc = " Add empty line below" })
@@ -44,13 +45,17 @@ set("o", "<S-right>", "$", { desc = " Go to end of line on operator pending mode
 set("o", "<S-left>", "^", { desc = " Go to start of line on operator pending mode" })
 
 set("n", "<leader>fs", ":w<CR>", { silent = true, desc = " Save file" })
+set("n", "<leader>fS", ":wa<CR>", { silent = true, desc = " Save all files" })
+
+set("n", "<leader>hh", ":h ", { desc = " Save file" })
 
 set("n", "<S-left>", "<cmd>bprevious<cr>", { desc = " Prev Buffer" })
 set("n", "<S-right>", "<cmd>bnext<cr>", { desc = " Next Buffer" })
 
-set("n", "<leader>qq", "<cmd>:q<cr>", { desc = " Delete window" })
+set("n", "<leader>q", "<cmd>:bd<cr>", { desc = " Delete window" })
 set("n", "<leader>fd", "<cmd>:bd<cr>", { desc = " Delete Buffer and Window" })
 set("n", "<leader>bd", "<cmd>:bd<cr>", { desc = " Delete Buffer and Window" })
+set("n", "<leader>bk", "<cmd>:bd<cr>", { desc = " Delete Buffer and Window" })
 
 set("n", "<leader>ll", "<cmd>Lazy<cr>", { desc = " Lazy" })
 
@@ -63,3 +68,5 @@ set("n", "<M-up>", ":m .-2<CR>==", { silent = true, desc = " Alt k move line up 
 set("v", "<M-down>", ":m '>+1<CR>gv=gv", { silent = true, desc = " Alt j move line up v mode" })
 set("v", "<M-up>", ":m '<-2<CR>gv=gv", { silent = true, desc = " Alt k move line up v mode" })
 set("t", "<esc><esc>", "<C-\\><C-n>", { silent = true, desc = " Escape in Terminal" })
+
+set("n", "<leader><leader>", "<C-\\><C-n>", { silent = true, desc = " Escape in Terminal" })

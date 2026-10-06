@@ -7,6 +7,10 @@ return {
 		require("catppuccin").setup({
 			term_colors = true,
 			transparent_background = true,
+			float = {
+				transparent = true,
+				solid = true,
+			},
 			styles = {
 				functions = { "italic" },
 				comments = { "underline", "italic" },
@@ -59,14 +63,11 @@ return {
 				},
 			},
 			flavour = "mocha",
-			highlight_overrides = {
-				mocha = function(mocha)
-					return {
-						LineNr = { fg = mocha.flamingo },
-						Whitespace = { fg = mocha.lavender },
-					}
-				end,
-			},
+			custom_highlights = function(colors)
+				return {
+					Macro = { fg = colors.red },
+				}
+			end,
 		})
 		vim.cmd.colorscheme("catppuccin")
 	end,

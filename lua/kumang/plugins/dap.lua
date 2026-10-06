@@ -101,7 +101,7 @@ return {
 						elements = {
 							{
 								id = "scopes",
-								size = 0.25,
+								size = 0.20,
 							},
 							{
 								id = "breakpoints",
@@ -115,6 +115,7 @@ return {
 								id = "watches",
 								size = 0.20,
 							},
+							{ id = "console", size = 0.20 },
 						},
 						position = "left",
 						size = 30,
@@ -177,40 +178,18 @@ return {
 				},
 			})
 
-			-- For dap-view-nvim
-			-- local ui = require("dap-view")
-			-- ui.setup({
-			-- 	winbar = {
-			-- 		sections = {
-			-- 			"breakpoints",
-			-- 			"exceptions",
-			-- 			"watches",
-			-- 			"scopes",
-			-- 			"threads",
-			-- 			"repl",
-			-- 			"disassembly",
-			-- 		},
-			-- 		show_keymap_hints = true,
-			-- 	},
-			-- 	windows = {
-			--
-			-- 		size = 0.5,
-			-- 		position = "right",
-			-- 		terminal = {
-			-- 			size = 0.5,
-			-- 			position = "below",
-			-- 		},
-			-- 	},
-			-- })
-
 			dap.adapters.gdb = {
 				type = "executable",
 				command = "gdb",
 				args = {
+					"--quiet",
 					"--interpreter=dap",
+					"--eval-command",
+					"set print pretty on",
 				},
 			}
 
+			-- For debugging using stdin & stdout (gdb does not work)
 			dap.adapters.cppdbg = {
 				id = "cppdbg",
 				type = "executable",

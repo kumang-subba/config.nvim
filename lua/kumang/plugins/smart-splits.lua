@@ -69,25 +69,5 @@ return {
 			require("smart-splits").move_cursor_previous,
 			{ desc = " Move cursor previous" }
 		)
-		-- swapping buffers between windows
-		vim.keymap.set(
-			"n",
-			"<leader><leader>h",
-			require("smart-splits").swap_buf_left,
-			{ desc = " Swap buffer with left" }
-		)
-		vim.keymap.set(
-			"n",
-			"<leader><leader>j",
-			require("smart-splits").swap_buf_down,
-			{ desc = " Swap buffer with down" }
-		)
-		vim.keymap.set("n", "<leader><leader>k", require("smart-splits").swap_buf_up, { desc = " Swap buffer with up" })
-		vim.keymap.set(
-			"n",
-			"<leader><leader>l",
-			require("smart-splits").swap_buf_right,
-			{ desc = " Swap buffer with right" }
-		)
 	end,
 }

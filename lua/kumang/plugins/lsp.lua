@@ -146,9 +146,13 @@ return {
 					local client = assert(vim.lsp.get_client_by_id(args.data.client_id), "must have valid client")
 
 					vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
-					-- vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = 0, desc = " Code Definition" })
-					-- vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = 0, desc = " Code References" })
-					-- vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = 0, desc = " Code Declaraction" })
+					vim.keymap.set("n", "<leader>cd", vim.lsp.buf.definition, { buffer = 0, desc = " Code Definition" })
+					vim.keymap.set(
+						"n",
+						"<leader>cD",
+						vim.lsp.buf.declaration,
+						{ buffer = 0, desc = " Code Declaraction" }
+					)
 					vim.keymap.set(
 						"n",
 						"<leader>co",
