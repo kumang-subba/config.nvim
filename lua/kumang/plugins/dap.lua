@@ -217,6 +217,16 @@ return {
 						return args
 					end,
 				},
+				{
+					name = "Attach to gdbserver :1234",
+					type = "gdb",
+					request = "attach",
+					target = "localhost:1234",
+					program = function()
+						return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+					end,
+					cwd = "${workspaceFolder}",
+				},
 			}
 
 			dap.configurations.cpp = dap.configurations.c
